@@ -2,7 +2,7 @@
 layout: post
 title: TDD in Clojure Using Midje
 date: 2013-05-24 19:21:44
-categories: update programming
+categories: programming
 ---
 I just discovered midje, a testing library for clojure.  Clojure already comes
 with `clojure.test` and it looks something like this:

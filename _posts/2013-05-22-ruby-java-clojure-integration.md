@@ -2,7 +2,7 @@
 layout: post
 title: Ruby Java Clojure Integration
 date: 2013-05-22 21:55:11
-categories: update programming
+categories: programming
 ---
 I have Ruby, Java and Clojure set up in my rails app.  I'm using JRuby and I'm
 able to load the jar file created from Clojure.  Here's what I did.

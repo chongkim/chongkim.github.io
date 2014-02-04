@@ -2,7 +2,7 @@
 layout: post
 title: Discovering Bootstrap
 date: 2013-04-30 10:21:00
-categories: update programming
+categories: programming
 ---
 [Alejandra](http://alejandraluaces.com/) mentioned that I should use Bootstrap
 to make my site look better.  I few days later I downloaded it.  It wasn't what

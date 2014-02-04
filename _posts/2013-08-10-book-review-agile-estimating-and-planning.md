@@ -2,7 +2,7 @@
 layout: post
 title: "Book Review: Agile Estimating and Planning"
 date: 2013-08-10 12:47:22
-categories: update programming
+categories: programming
 ---
 I've just finished a wonderful book, "Agile Estimating And Planning" by Mike
 Cohn.  At first, I wasn't sure what this book could teach me because I saw

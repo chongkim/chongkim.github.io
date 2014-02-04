@@ -2,7 +2,7 @@
 layout: post
 title: Autotest In Python
 date: 2013-07-16 01:38:11
-categories: update programming
+categories: programming
 ---
 In Python, there is a testing framework called `nose` and it's fairly easy to
 use.

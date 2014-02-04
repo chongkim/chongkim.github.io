@@ -2,7 +2,7 @@
 layout: post
 title: Transposing in Clojure
 date: 2013-05-20 18:22:48
-categories: update programming
+categories: programming
 ---
 Let's say you have `[[0 1 2] [3 4 5] [6 7 8]]` and you want to transpose that
 to `[[0 3 5] [1 4 7] [2 5 8]]`.  There is a simple idiom that takes care of

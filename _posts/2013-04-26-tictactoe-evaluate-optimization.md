@@ -2,7 +2,7 @@
 layout: post
 title: Tic Tac Toe evaluate optimization
 date: 2013-04-26 10:15:00
-categories: update programming
+categories: programming
 ---
 Tic Tac Toe evaluate optimization	I had a thought that I can do a better job of
 evaluating the position in my Tic Tac Toe game.  For each unevaluated position,

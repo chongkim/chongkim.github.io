@@ -2,7 +2,7 @@
 layout: post
 title: Optimization by using symbols
 date: 2013-04-21 23:59:00
-categories: update programming
+categories: programming
 ---
 `ruby-prof` told me that there are too many string comparisons.  I modified the
 board structure from array of strings to array of symbols.  This did make it

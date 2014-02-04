@@ -2,7 +2,7 @@
 layout: post
 title: Apple keyboard ß
 date: 2013-07-22 23:04:02
-categories: update programming
+categories: programming
 ---
 If you press Option-s on an Apple keyboard, you'll get "ß".  It looks like the
 letter "B" or the Greek beta but it's actually a German sharp S, a ligature of

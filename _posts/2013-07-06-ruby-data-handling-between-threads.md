@@ -2,7 +2,7 @@
 layout: post
 title: Ruby Data Handling Between Threads
 date: 2013-07-06 22:41:30
-categories: update programming
+categories: programming
 ---
 Let's say that I want to have two threads.  The main thread is waiting for the
 worker thread to do a computation, which is expected to take some time.

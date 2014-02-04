@@ -2,7 +2,7 @@
 layout: post
 title: Review of "Test-Driven Development By Example"
 date: 2013-07-17 23:00:47
-categories: update programming
+categories: programming
 ---
 The book is written in three parts
 

@@ -2,7 +2,7 @@
 layout: post
 title: autoreload gem
 date: 2013-07-10 17:39:58
-categories: update programming
+categories: programming
 ---
 I'm writing an http server and I make small modifications to the code, such as
 displaying certain items.  The problem is that I have to stop the server and

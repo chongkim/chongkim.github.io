@@ -2,7 +2,7 @@
 layout: post
 title: An Elegant Negamax With Alpha-Beta Pruning in Clojure
 date: 2013-05-29 08:59:13
-categories: update programming
+categories: programming
 ---
 I've been reading up on [Negamax with Alpha-Beta
 Pruning](http://en.wikipedia.org/wiki/Negamax) and I need to write the

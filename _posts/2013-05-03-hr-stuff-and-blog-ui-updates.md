@@ -1,6 +1,6 @@
 ---
 layout: post
-title: HR Stuff and Blog UI Updates
+title: HR Stuff and Blog UI 
 date: 2013-05-03 19:16:40
 categories: update programming
 ---

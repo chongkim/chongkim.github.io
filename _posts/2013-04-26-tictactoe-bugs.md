@@ -2,7 +2,7 @@
 layout: post
 title: Tic Tac Toe bugs and RSpec during memoized position optimization
 date: 2013-04-26 10:24:00
-categories: update programming
+categories: programming
 ---
 Tic Tac Toe bugs and RSpec during memoized position optimization	I discovered
 a bug in my Tic Tac Toe program that was not detected by the RSpec.  I'm trying

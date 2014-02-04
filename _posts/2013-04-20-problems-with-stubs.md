@@ -2,7 +2,7 @@
 layout: post
 title: Problems with stubs
 date: 2013-04-20 12:15:00
-categories: update programming
+categories: programming
 ---
 Found a glaringly bad problem with my rspec.  Since the computer takes a long
 time to think, I stubbed the move selection.  This was okay because I have

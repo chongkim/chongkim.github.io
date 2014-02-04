@@ -2,7 +2,7 @@
 layout: post
 title: Indenting in Vim
 date: 2013-05-23 21:37:04
-categories: update programming
+categories: programming
 ---
 Just discovered that `=` in vim's normal mode is to indent properly.  In insert
 mode you can do do `ctrl-f`.

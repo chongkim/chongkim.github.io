@@ -2,7 +2,7 @@
 layout: post
 title: Dynamic Binding in Clojure
 date: 2013-05-28 23:21:13
-categories: update programming
+categories: programming
 ---
 Clojure has a `binding` method that allows you to stub out a method.  According
 to the `(cdoc binding)`, one example is:

@@ -2,7 +2,7 @@
 layout: post
 title: Learning Vim
 date: 2013-05-02 09:36:00
-categories: update programming
+categories: programming
 ---
 I knew vi from way back.  I've used it time to time, but I thought it was time
 to get serious and start using vim for real.  I decided to use vim for a week

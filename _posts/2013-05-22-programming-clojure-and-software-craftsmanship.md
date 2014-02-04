@@ -2,7 +2,7 @@
 layout: post
 title: Programming Clojure and Software Craftsmanship
 date: 2013-05-22 18:15:59
-categories: update programming
+categories: programming
 ---
 I finished reading Programming Clojure by Stuart Halloway.  It's probably not
 the best book to learn Clojure if you're just starting out.  It's probably a

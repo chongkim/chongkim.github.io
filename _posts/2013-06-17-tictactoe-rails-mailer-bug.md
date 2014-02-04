@@ -2,7 +2,7 @@
 layout: post
 title: TicTacToe Rails Mailer Bug
 date: 2013-06-17 22:07:06
-categories: update programming
+categories: programming
 ---
 I had a bug in my TTT Rails app.  When I try to send out email, I get
 

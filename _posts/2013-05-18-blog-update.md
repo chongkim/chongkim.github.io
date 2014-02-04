@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Blog Update
+title: Blog 
 date: 2013-05-18 00:29:19
 categories: update programming
 ---

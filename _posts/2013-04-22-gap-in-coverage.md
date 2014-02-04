@@ -2,7 +2,7 @@
 layout: post
 title: Gap in Coverage
 date: 2013-04-22 23:59:00
-categories: update programming
+categories: programming
 ---
 Jury duty at Hillsborough County Courthouse. Was achy from playing tennis on
 two days ago.  Wasn't selected.  Was able to get some work done while waiting.

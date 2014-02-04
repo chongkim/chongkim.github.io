@@ -2,7 +2,7 @@
 layout: post
 title: Object Scope Bindings
 date: 2013-05-06 07:59:59
-categories: update programming
+categories: programming
 ---
 Some time ago, I saw a ruby code that looked something like
 

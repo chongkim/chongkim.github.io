@@ -2,7 +2,7 @@
 layout: post
 title: Reflections on Implementing From An Existing RSpec
 date: 2013-07-30 23:29:37
-categories: update programming
+categories: programming
 ---
 I've been writing RSpec code first and implementing the actual code.  I go back
 and forth until the program is done.  I had a thought.  What would it be like

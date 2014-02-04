@@ -2,7 +2,7 @@
 layout: post
 title: Macbook Pro Hangs On Startup -- Fixed
 date: 2013-05-17 08:24:38
-categories: update programming
+categories: programming
 ---
 Today, I was using my laptop as normal.  I closed the laptop and went home.
 When I opened my laptop, I noticed my machine was completely stalled.  Computer

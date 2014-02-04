@@ -2,7 +2,7 @@
 layout: post
 title: Tampa IGNITE
 date: 2013-04-26 09:45:00
-categories: update programming
+categories: programming
 ---
 Went to Tampa IGNITE last night.  It started at 6:30pm and I got there late.
 Traffic was worse than I expected and I had a hard time parking.  By the time

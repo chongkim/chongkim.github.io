@@ -2,7 +2,7 @@
 layout: post
 title: Clojure in Emacs
 date: 2013-05-15 22:34:02
-categories: update programming
+categories: programming
 ---
 It was quite confusing to set up clojure for emacs.  Setting up clojure-mode
 itself was quite easy.  Assuming you have the latest emacs with package

@@ -2,7 +2,7 @@
 layout: post
 title: Trouble With Gem
 date: 2013-10-04 08:49:25
-categories: update programming
+categories: programming
 ---
 I've been getting this error when I try to install a gem:
 

@@ -2,7 +2,7 @@
 layout: post
 title: Capybara-webkit Is Broken for JRuby
 date: 2013-05-27 00:37:01
-categories: update programming
+categories: programming
 ---
 I've been having a hard time trying to get `capybara-webkit` (version 1.0.0)
 working on my rails app using cucumber using JRuby.  When I run `cucumber`, I

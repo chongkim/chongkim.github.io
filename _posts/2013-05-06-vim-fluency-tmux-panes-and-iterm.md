@@ -2,7 +2,7 @@
 layout: post
 title: Vim Fluency, Tmux Panes and iTerm
 date: 2013-05-06 17:44:33
-categories: update programming
+categories: programming
 ---
 Learned some more vim and tmux over the weekend.
 

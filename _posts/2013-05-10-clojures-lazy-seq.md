@@ -2,7 +2,7 @@
 layout: post
 title: Clojure's lazy-seq
 date: 2013-05-10 18:28:49
-categories: update programming
+categories: programming
 ---
 I'm reading through Programming Clojure and was struck by one of their examples
 on lazy-seq.  They didn't go into detail because they will be going more in

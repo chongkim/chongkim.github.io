@@ -2,7 +2,7 @@
 layout: post
 title: Clojure Tic-Tac-Toe
 date: 2013-05-21 18:28:45
-categories: update programming
+categories: programming
 ---
 I finally completed my tic-tac-toe program in Clojure.  I learned enough about
 Clojure to be comfortable with it the next time I need to write something.  I

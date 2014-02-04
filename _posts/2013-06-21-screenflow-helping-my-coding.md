@@ -2,7 +2,7 @@
 layout: post
 title: Screenflow Helping My Coding
 date: 2013-06-21 20:06:50
-categories: update programming
+categories: programming
 ---
 I got [Screenflow](http://www.telestream.net/screenflow/) a couple of weeks
 ago.  At first I wanted to create screencasts where I show something

@@ -2,7 +2,7 @@
 layout: post
 title: HTTP Server In Ruby Using BDD
 date: 2013-07-08 18:31:52
-categories: update programming
+categories: programming
 ---
 I wrote a rudimentary HTTP server and practiced writing it for the past few
 days.  I used Screenflow to record and replayed it in fast motion so I can see

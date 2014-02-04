@@ -2,7 +2,7 @@
 layout: post
 title: Fizzbuzz kata
 date: 2013-04-24 23:49:00
-categories: update programming
+categories: programming
 ---
 Will spent some time with me and Megan doing pair programming of the Fizzbuzz
 kata using TDD (Test Driven Development).  We had to write a failing test first

@@ -2,7 +2,7 @@
 layout: post
 title: Poltergeist For Rails Javascript testing
 date: 2013-05-27 01:18:28
-categories: update programming
+categories: programming
 ---
 Since `capybara-webkit` is broken for JRuby. I installed the `poltergeist` gem.
 It uses PhantomJS so I needed to install that too.

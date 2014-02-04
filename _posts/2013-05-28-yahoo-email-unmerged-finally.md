@@ -2,7 +2,7 @@
 layout: post
 title: Yahoo! Email Unmerged Finally
 date: 2013-05-28 18:59:49
-categories: update programming
+categories: programming
 ---
 I had a problem with my yahoo account for years.  When I signed up for SBC
 Global Internet service from ATT, I merged my free account

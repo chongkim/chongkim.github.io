@@ -2,7 +2,7 @@
 layout: post
 title: Redcarpet and Pygments
 date: 2013-04-24 14:59:00
-categories: update programming
+categories: programming
 ---
 Decided on Redcarpet over RedCloth and BlueCloth.  Redcarpet has a lot more
 flexibility in that it allows you to modify post processing of certain areas.

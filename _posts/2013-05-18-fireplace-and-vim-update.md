@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Fireplace and Vim update
+title: Fireplace and Vim 
 date: 2013-05-18 00:35:58
 categories: update programming
 ---

@@ -2,7 +2,7 @@
 layout: post
 title: CoffeeScript
 date: 2013-06-11 13:02:23
-categories: update programming
+categories: programming
 ---
 I've always wanted to try CoffeeScript ever since I saw it on Railscast.  I
 finally got my chance.  Luckily it comes built-in for Rails 3, but I didn't

@@ -2,7 +2,7 @@
 layout: post
 title: Spork Broken For Cucumber On JRuby
 date: 2013-06-05 23:52:15
-categories: update programming
+categories: programming
 ---
 Spork was almost running on JRuby, but it's completely broken.  I ran my
 experiment where I created a new MRI rails application called `foo`.  I

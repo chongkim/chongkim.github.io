@@ -2,7 +2,7 @@
 layout: post
 title: Learning Bootstrap, LiveReload, vim, etc.
 date: 2013-05-01 09:55:00
-categories: update programming
+categories: programming
 ---
 Yesterday, I looked for documentation for Bootstrap but that wasn't necessary.
 The documentation was on the [site](http://twitter.github.io/bootstrap/)

@@ -2,7 +2,7 @@
 layout: post
 title: Authentication and Authorization with Devise and CanCan
 date: 2013-04-23 23:59:00
-categories: update programming
+categories: programming
 ---
 Spent the day setting up authentication with devise and authorization with
 CanCan for this blog website. Devise allows you to register on the website and

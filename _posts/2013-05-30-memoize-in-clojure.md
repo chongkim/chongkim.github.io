@@ -2,7 +2,7 @@
 layout: post
 title: Memoize In Clojure
 date: 2013-05-30 00:29:32
-categories: update programming
+categories: programming
 ---
 Let's say you have a function that calls itself and repeatedly calculates
 previous results.  For instance,

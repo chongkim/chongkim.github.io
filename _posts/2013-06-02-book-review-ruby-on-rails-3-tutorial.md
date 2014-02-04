@@ -2,7 +2,7 @@
 layout: post
 title: "Book Review: Ruby On Rails 3 Tutorial by Michael Hartl"
 date: 2013-06-02 01:30:25
-categories: update programming
+categories: programming
 ---
 This book is great for beginners starting out on Rails programming.  It shows
 you how to develop using TDD, use version control with Git and pushing the code

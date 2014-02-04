@@ -2,7 +2,7 @@
 layout: post
 title: Finished Software Craftsmanship
 date: 2013-05-24 18:10:39
-categories: update programming
+categories: programming
 ---
 I finished the Software Craftsmanship book.  The main points of the book was
 that software engineering came from building huge massive projects like the

@@ -2,7 +2,7 @@
 layout: post
 title: Tic Tac Toe Rails In JRuby
 date: 2013-06-25 16:54:00
-categories: update programming
+categories: programming
 ---
 I've been working on my JRuby implementation of the Tic Tac Toe Rails program
 with a Clojure back-end.  It's been taking me a lot longer than I expected and

@@ -2,7 +2,7 @@
 layout: post
 title: Initial Blog
 date: 2013-04-20 08:00:00
-categories: update programming
+categories: programming
 ---
 The is the start of my blog. I'm writing this in an HTML static file even
 though it's a Ruby on Rails app. Eventually I'll get this set up so that it's

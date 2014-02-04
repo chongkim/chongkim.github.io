@@ -2,7 +2,7 @@
 layout: post
 title: 4x4 TicTacToe with Symmetry Lookup
 date: 2013-04-29 09:24:00
-categories: update programming
+categories: programming
 ---
 Last night I finally finished a working version of the 4x4 TicTacToe program.
 I had to add the symmetry lookup because it took too long for me to actually

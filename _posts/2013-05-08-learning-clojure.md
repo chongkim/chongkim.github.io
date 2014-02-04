@@ -2,7 +2,7 @@
 layout: post
 title: Learning Clojure
 date: 2013-05-08 18:40:04
-categories: update programming
+categories: programming
 ---
 Been learning clojure mainly through reading "Programming Clojure" by Halloway
 and Bedra from Pragmatic Programers.  I've been playing around with the REPL

@@ -2,7 +2,7 @@
 layout: post
 title: Fixed my first bug in TicTacToe
 date: 2013-04-27 23:00:00
-categories: update programming
+categories: programming
 ---
 Somehow as I played my TicTacToe game, I noticed it was not unbeatable.  It was
 unbeatable but somewhere along the way, I must've introduced a bug.  It was

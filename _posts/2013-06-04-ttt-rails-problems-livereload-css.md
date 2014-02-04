@@ -2,7 +2,7 @@
 layout: post
 title: TTT Rails Problems - Livereload, CSS
 date: 2013-06-04 14:05:18
-categories: update programming
+categories: programming
 ---
 One thing I hate about JRuby is that you keep encountering broken gems.
 Livereload is one of those.  I have guard running and installed livereload for

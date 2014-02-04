@@ -2,7 +2,7 @@
 layout: post
 title: Tic Tac Toe Kata in Ruby Using TDD
 date: 2013-06-16 17:31:09
-categories: update programming
+categories: programming
 ---
 I've been practicing TicTacToe in Ruby using TDD for the past few days.  I
 finally got it down to under an hour (50 minutes actually).  I posted a video

@@ -2,7 +2,7 @@
 layout: post
 title: On To Clojure Tic-Tac-Toe
 date: 2013-05-16 18:57:20
-categories: update programming
+categories: programming
 ---
 I've started writing my Clojure version of Tic-Tac-Toe.  I was trying to get
 fireplace.vim working but it'll have to wait.  I started writing simple tests

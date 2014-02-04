@@ -2,7 +2,7 @@
 layout: post
 title: Ruby Debugging
 date: 2013-07-24 17:39:55
-categories: update programming
+categories: programming
 ---
 To start debugging in ruby 1.9, you need the gem `debugger` (see [github
 repository](https://github.com/cldwalker/debugger))

@@ -2,7 +2,7 @@
 layout: post
 title: Homebrew And MySQL
 date: 2013-05-08 18:11:42
-categories: update programming
+categories: programming
 ---
 I've been using MacPorts and I needed to install clojure.  The one on MacPorts
 is old and Gavin Stark told me I should use Homebrew and get rid of MacPorts

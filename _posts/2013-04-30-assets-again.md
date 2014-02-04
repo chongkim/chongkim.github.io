@@ -2,7 +2,7 @@
 layout: post
 title: Assets again
 date: 2013-04-30 10:05:00
-categories: update programming
+categories: programming
 ---
 Yesterday, I thought I figured out what I needed to do in order to get assets
 working on heroku.  Today, I modified the CSS in `app/assets/css` and pushed it

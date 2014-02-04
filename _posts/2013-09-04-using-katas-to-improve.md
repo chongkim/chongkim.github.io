@@ -2,7 +2,7 @@
 layout: post
 title: Using Katas To Improve
 date: 2013-09-04 15:08:2
-categories: update programming
+categories: programming
 ---
 Some Background Thoughts
 ------------------------
