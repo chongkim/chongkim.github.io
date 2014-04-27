@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Trouble With Rails 4 - Turbolinks
-date: 2013-10-04 08:49:25
+date: 2014-04-27 10:49:25
 categories: programming
 ---
 
