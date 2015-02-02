@@ -15,11 +15,13 @@ that this breaks jQuery's `$(document).ready()`.
 The easiest solution is to use jquery.turbolinks
 
 Gemfile:
+
 ```ruby
 gem 'jquery-turbolinks'
 ```
 
 app/assets/javascripts/application.js:
+
 ```ruby
 //= require jquery
 //= require jquery.turbolink
