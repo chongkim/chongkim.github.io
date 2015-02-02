@@ -22,7 +22,7 @@ gem 'jquery-turbolinks'
 
 app/assets/javascripts/application.js:
 
-```ruby
+```javascript
 //= require jquery
 //= require jquery.turbolink
 //= require jquery_ujs
