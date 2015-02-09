@@ -10,6 +10,9 @@ weren't located in the same project directory.
 
 One way to get this working is by setting your path so it knows where is your gem.
 
+
+File: .vimrc
+
 ```vim
 set path+=/Users/ckim/.rvm/gems/ruby-2.1.5/gems/nokogiri-1.6.6.2/lib/
 ```
