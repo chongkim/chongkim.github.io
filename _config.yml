@@ -1,5 +1,5 @@
 name: Chong Kim
 markdown: redcarpet
-pygments: true
+highlighter: true
 encoding: UTF-8
 url: "http://chongkimg.org"
