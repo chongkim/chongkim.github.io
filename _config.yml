@@ -1,5 +1,12 @@
-name: Chong Kim
-markdown: redcarpet
-highlighter: pygments
-encoding: UTF-8
-url: "http://chongkimg.org"
+# Site settings
+title: Chong Kim's Blog
+email: chongkim@yahoo.com
+description: >
+  Site contains many things I've learned and want to share with my readers.
+baseurl: ""
+url: "http://chongkim.org"
+twitter_username: chong_oh_kim
+github_username:  chongkim
+
+# Build settings
+markdown: kramdown
