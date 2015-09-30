@@ -1,0 +1,117 @@
+ <!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Adventures in MySQL with Chong Kim</title>
+    <meta name="description" content="Things I've learned about databases, MySQL in particular.">
+    <meta name="author" content="Chong Oh Kim">
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+
+    <link rel="stylesheet" href="../css/reveal.css">
+    <link rel="stylesheet" href="../css/theme/black.css" id="theme">
+
+  </head>
+  <body>
+    <div class="reveal">
+      <div class="slides">
+
+        <section>
+          <h1>start off using flat files</h1>
+          o using fseek() and ftell() or mmap(), you can treat a file like memory
+          o set own data structures as files
+          o use Cohen white book
+          o didn't know much about databases, no knowledge of SQL
+          o MySQL was just starting out
+        </section>
+        <section>
+          o crash course in SQL
+            o SELECT FROM WHERE
+            o joins
+            o outer joins
+            o self joins
+        </section>
+        <section>
+          o join tables
+        </section>
+  <section>o normalizing</section>
+  <section>o Hierarchical data
+    o http://mikehillyer.com/articles/managing-hierarchical-data-in-mysql/
+  </section>
+  <section>o \P less -S
+  </section>
+  <section>o Engines
+    o myisam
+    o innodb
+    o blackhole
+  </section>
+  <section>o multiple servers
+  </section>
+  <section>o replication
+  </section>
+  <section>o triggers
+  </section>
+  <section>o variables
+  </section>
+  <section>o explain plan</section>
+  <section>o optimize table</section>
+  <section>o analyze table</section>
+  <section>o show processlist</section>
+  <section>o batch processing</section>
+  <section>o hashing row entries</section>
+  <section>o ORM</section>
+  <section>o indexing</section>
+  <section>o composite indexes</section>
+  <section>o recovery</section>
+  <section>o help</section>
+  <section>o dates, 1..10</section>
+  <section>o aggregate functions</section>
+  <section>o property table</section>
+  <section>o information_schema</section>
+  <section>o stored procedure</section>
+  <section>o varchar vs binary</section>
+  <section>o ci</section>
+  <section>o subqueries
+    o one row
+    o multiple rows
+    o in FROM
+  </section>
+  <section>
+  o set theory
+    o UNION ALL
+    o "MINUS"
+    o intersect
+  </section>
+      </div>
+    </div>
+    <script src="../lib/js/head.min.js"></script>
+    <script src="../js/reveal.js"></script>
+
+    <script>
+
+      // Full list of configuration options available at:
+      // https://github.com/hakimel/reveal.js#configuration
+      Reveal.initialize({
+        controls: true,
+        progress: true,
+        history: true,
+        center: true,
+
+        transition: 'slide', // none/fade/slide/convex/concave/zoom
+
+        // Optional reveal.js plugins
+        dependencies: [
+          { src: '../lib/js/classList.js', condition: function() { return !document.body.classList; } },
+          { src: '../plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+          { src: '../plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+          { src: '../plugin/highlight/highlight.js', async: true, condition: function() { return !!document.querySelector( 'pre code' ); }, callback: function() { hljs.initHighlightingOnLoad(); } },
+          { src: '../plugin/zoom-js/zoom.js', async: true },
+          { src: '../plugin/notes/notes.js', async: true }
+        ]
+      });
+
+    </script>
+  </body>
+</html>
