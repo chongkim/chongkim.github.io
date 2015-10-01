@@ -11,3 +11,9 @@ checked back with the App Store, it said "An error has occurred" next to "Downlo
 I didn't know what to do at this point so I Googled around a bit and found a
 solution. I need to look in my `Applications` folder for the install file.
 Double click it to run it and everything went fine from there.
+
+After the installation, the `/usr/local` directory was owned by `root` so I had to do
+
+```bash
+$ chown -R ckim:staff /usr/local
+```
