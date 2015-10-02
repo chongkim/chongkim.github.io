@@ -8,7 +8,7 @@ Spork was almost running on JRuby, but it's completely broken.  I ran my
 experiment where I created a new MRI rails application called `foo`.  I
 modified the Gemfile to include
 
-```ruby
+{% highlight ruby %}
  group :test do
   gem 'spork-rails'
   gem 'cucumber', '1.2.5'
@@ -18,7 +18,7 @@ modified the Gemfile to include
   gem 'guard-cucumber'
   gem 'database_cleaner'
 end
-```
+{% endhighlight %}
 
 I run `bundle install`.
 
@@ -29,10 +29,10 @@ I set up spork with `spork cucumber -b`.  I modify the
 
 I set up guard with:
 
-```bash
+{% highlight bash %}
 guard init cucumber
 guard init spork
-```
+{% endhighlight %}
 
 I edit the `Guardfile` so that cucumber runs with `:cli => '--drb'`.
 

@@ -9,9 +9,9 @@ to get serious and start using vim for real.  I decided to use vim for a week
 as my sole editor.  After Googling around the web, I realized I should start
 from the beginning and typed:
 
-```bash
+{% highlight bash %}
 $ vimtutor
-```
+{% endhighlight %}
 
 I discovered `ctrl-d`.  In command mode (when you hit the `:`), `ctrl-d` will
 list all the available commands.  You can start typing a few letters of the
@@ -36,10 +36,11 @@ I got [snipMate](https://github.com/garbas/vim-snipmate) installed.  One
 annoying problem I encountered was that the indentation is done with `<tab>`s.
 Found that I just needed to add this to my .vimrc:
 
-```vim
+{% highlight vim %}
 set expandtab
 set ts=2
-```
+{% endhighlight %}
+
 
 `set expandtab` will automatically convert tabs to spaces.  `set ts=2` sets the
 tab stops to be 2.  The effect of these two options will put two spaces instead
@@ -48,7 +49,7 @@ of `<tab>`.
 Probably the most useful command I discovered is `:map`.  It will show you the
 key mapping.  Here is a sample output
 
-```
+{% highlight vim %}
 n  <D-E>         :RerunSpec<CR>
 n  <D-L>         :RunSpecLine<CR>
 n  <D-R>         :RunSpec<CR>
@@ -61,7 +62,7 @@ n  cs            <Plug>Csurround
 n  ds            <Plug>Dsurround
 n  gx            <Plug>NetrwBrowseX
 x  gS            <Plug>VgSurround
-```
+{% endhighlight %}
 
 The first column looks like the mode.  `n` is normal.  I believe `x` might be
 some extension.

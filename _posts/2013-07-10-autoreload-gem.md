@@ -11,7 +11,7 @@ times when you're tweaking something.
 
 You can get around this problem by using the `autoreload` gem.
 
-```ruby
+{% highlight ruby %}
 require "autoreload"
 autoreload(interval: 2) do
   require "./myserver"
@@ -19,11 +19,11 @@ end
 
 myserver = MyServer.new
 myserver.start
-```
+{% endhighlight %}
 
 `myserver.rb`:
 
-```ruby
+{% highlight ruby %}
 class MyServer
   def foo
     1
@@ -35,7 +35,7 @@ class MyServer
     end
   end
 end
-```
+{% endhighlight %}
 
 When you run this, you'll see 1's being printed.  Keep the code running and
 modify `myserver.rb` so that `foo` returns `2`.  The running code will now

@@ -18,7 +18,7 @@ was the Clojure back-end that runs the TTT engine.  That turned out to be the
 easy part.  The interface gave me some challenges.  I used CoffeeScript.  The
 language is pretty simple.  I ran into silly little errors such as
 
-```js
+{% highlight js %}
 setTimeout(myfunc, 500)  // runs fine
 
 setTimeout(-> myfunc, 500)  // does not work
@@ -28,7 +28,7 @@ setTimeout(-> myfunc(), 500)  // this is what it should be
 setTimeout(function() {
     myfunc();
 }, 500)
-```
+{% endhighlight %}
 
 Since the first two lines look very similar so my eye didn't catch it until
 much later.

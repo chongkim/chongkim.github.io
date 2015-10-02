@@ -12,9 +12,9 @@ and `/usr/local` and used installed `mysql` and `postgresql`.  The only tricky
 part was that my MySQL Preference Pane is expecting to see `/usr/local/mysql`.
 I just symlinked that to current version of mysql
 
-```bash
+{% highlight bash %}
 sudo ln -s /usr/local/Cellar/mysql/5.6.10 /usr/local/mysql
-```
+{% endhighlight %}
 
 and everything is back to normal.  This may be a problem if I upgrade in the
 future.  I may fix this by removing the symlink and make it into a real

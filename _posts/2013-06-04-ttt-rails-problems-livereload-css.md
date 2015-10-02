@@ -18,7 +18,7 @@ I wasted a lot of time on this.  This is one major drawback to using JRuby.
 
 Another problem I had today was with CSS.  Let's say you had
 
-```html
+{% highlight html %}
 <!DOCTYPE html>
 <html>
   <style type="text/css" media="all">
@@ -32,14 +32,14 @@ Another problem I had today was with CSS.  Let's say you had
   <div id="whole"></div>
 </body>
 </html>
-```
+{% endhighlight %}
 
 You'd expect to see a flood of red on your screen.  Instead you see nothing.
 If you take away the <code>&lt;!DOCTYPE html&gt;</code>, then it works.  If you
 keep the doctype, you can also get it to work by setting the `html` and `body`
 sizes.
 
-```html
+{% highlight html %}
 <!DOCTYPE html>
 <html>
   <style type="text/css" media="all">
@@ -57,7 +57,7 @@ sizes.
   <div id="whole"></div>
 </body>
 </html>
-```
+{% endhighlight %}
 
 Seems like <code>&lt;!DOCTYPE html&gt;</code> defines the `body` and `html` to
 have height zero until there is content.  This one issue took a while to figure

@@ -9,40 +9,40 @@ repository](https://github.com/cldwalker/debugger))
 
 **Gemfile**
 
-```ruby
+{% highlight ruby %}
 source "https://rubygems.org"
 
 gem "debugger"
-```
+{% endhighlight %}
 
 **yourcode.rb**
 
-```ruby
+{% highlight ruby %}
 require "debugger"
 
 def my_function
   debugger    # <== place debug point by putting this in your code
   x = 1
 end
-```
+{% endhighlight %}
 
 You can also do it in one shot:
 
-```ruby
+{% highlight ruby %}
 def my_function
   require "debugger"; debugger
   x = 1
 end
-```
+{% endhighlight %}
 
 Because the breakpoint is in your code, you can put logic around it
 
-```ruby
+{% highlight ruby %}
 def my_function
   debugger if foo == 3 && !bar
   x = 1
 end
-```
+{% endhighlight %}
 
 You should put `debugger` before the desired breakpoint because it will stop on
 the next statement after a call to `debugger`.  If you put it at the end of
@@ -62,7 +62,7 @@ functionality you need.  So if you used `pry` in the past, you should try out
 
 Once you're inside the debugger, you can type "help" or just "h".
 
-```bash
+{% highlight bash %}
 (rdb:1) h
 ruby-debug help v1.6.1
 Type 'help <command-name>' for help on a specific command
@@ -73,11 +73,11 @@ break      disable  eval    info  method  putl     set     step    up
 catch      display  exit    irb   next    quit     show    thread  var
 condition  down     finish  jump  p       reload   skip    tmate   where
 continue   edit     frame   kill  pp      restart  source  trace
-```
+{% endhighlight %}
 
 You can also type "h set" to see options available
 
-```bash
+{% highlight bash %}
 (rdb:1) h set
 Modifies parts of the ruby-debug environment. Boolean values take
 on, off, 1 or 0.
@@ -103,7 +103,7 @@ set linetrace -- Set line execution tracing
 set listsize -- Set number of source lines to list by default
 set trace -- Display stack trace when 'eval' raises exception
 set width -- Number of characters the debugger thinks are in a line
-```
+{% endhighlight %}
 
 You can put these commands into a `.rdebugrc` file.  You can also require ruby
 files so it'll load automatically when the debugger is run.  I always have

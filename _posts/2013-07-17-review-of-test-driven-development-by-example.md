@@ -59,7 +59,7 @@ and lets you define your own.
 The third part of the book contained some useful information.  It mentions
 Pluggable Object.  The idea being that if you have code that looks like
 
-```java
+{% highlight java %}
 public void mouseDown() {
   selected = findFigure()
   if (selected != null)
@@ -75,11 +75,11 @@ public void mouseUp() {
   if (select != null)
     selectAll();
 }
-```
+{% endhighlight %}
 
 You can make it look like this:
 
-```java
+{% highlight java %}
 public void mouseDown() {
   selected = findFigure();
   if (selected != null)
@@ -93,7 +93,7 @@ public void mouseMove() {
 public void mouseUp() {
   mode.mouseUp();
 }
-```
+{% endhighlight %}
 
 The point being that after the initial setup, the logic is simplified by
 calling the appropriate method on the object and let the object handle the

@@ -17,11 +17,11 @@ NameError: ActionMailer is not missing constant Base!
 
 It turns out that at one point I created a mailer called `mail`.
 
-```bash
+{% highlight bash %}
 # don't do this
 
 $ rails g mailer mail
-```
+{% endhighlight %}
 
 Once I deleted that file (`app/mailers/mail.rb`), my email starting working
 again.

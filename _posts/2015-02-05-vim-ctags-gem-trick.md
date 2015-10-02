@@ -13,19 +13,19 @@ One way to get this working is by setting your path so it knows where is your ge
 
 File: .vimrc
 
-```vim
+{% highlight vim %}
 set path+=/Users/ckim/.rvm/gems/ruby-2.1.5/gems/nokogiri-1.6.6.2/lib/
-```
+{% endhighlight %}
 
 But this means you'd have to do it for every gem and that's a lot of maintaining.
 
 Chris Lamb showed me a simpler solution: just include your gems in
 your project directory and run the ctags as you'd normally do.
 
-```bash
+{% highlight bash %}
 $ bundle install --path .bundle
 $ ctags -R .
-```
+{% endhighlight %}
 Now I'm able to jump into the gem's source code as easily as the
 rest of my code in my project.
 

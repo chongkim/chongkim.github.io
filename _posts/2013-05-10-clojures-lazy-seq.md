@@ -9,7 +9,7 @@ on lazy-seq.  They didn't go into detail because they will be going more in
 detail on lazy evaluation on a future chapter.  The started to analyze the
 code:
 
-```clj
+{% highlight clj %}
 (def primes
   (concat
    [2 3 5 7]
@@ -24,7 +24,7 @@ code:
                         6 4 6 8 4 2 4 2 4 8 6 4 6 2  4  6
                         2 6 6 4 2 4 6 2 6 4 2 4 2 10 2 10])]
       (primes-from 11 wheel)))))
-```
+{% endhighlight %}
 
 A few things of note:
 
@@ -41,9 +41,9 @@ A few things of note:
   test that is included in the previous cached values of `primes`.  For
   instance, if you had
 
-```clj
+{% highlight clj %}
 (take-while #(< % n) primes)
-```
+{% endhighlight %}
 
 This would never end (infinite recursion) because let's say _n_ = 8. `primes`
 would return `[2 3 5 7]`, which are all less than 8 so it will try to fetch the
@@ -69,15 +69,15 @@ from continuing.
   code that needs to be executed after `prime-from` returns with it's value.
 * The following code could be written another way from
 
-```clj
+{% highlight clj %}
 (lazy-seq (cons n (primes-from (+ n f) r)))
-```
+{% endhighlight %}
 
 to
 
-```clj
+{% highlight clj %}
 (cons n (lazy-seq (primes-from (+ n f) r)))
-```
+{% endhighlight %}
 
 * Seems like `lazy-seq` needs to have a recursive call in the body otherwise it
   throws an exception.

@@ -14,6 +14,6 @@ Double click it to run it and everything went fine from there.
 
 After the installation, the `/usr/local` directory was owned by `root` so I had to do
 
-```bash
+{% highlight bash %}
 $ chown -R ckim:staff /usr/local
-```
+{% endhighlight %}

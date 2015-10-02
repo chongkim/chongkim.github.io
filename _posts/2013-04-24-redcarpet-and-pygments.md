@@ -7,7 +7,7 @@ categories: programming
 Decided on Redcarpet over RedCloth and BlueCloth.  Redcarpet has a lot more
 flexibility in that it allows you to modify post processing of certain areas.
 I was interested in fenced code blocks.  This is where you want to specify
-blocks of code delimited by ```.  I want to add syntax highlighting, which is
+blocks of code delimited by <code>```</code>.  I want to add syntax highlighting, which is
 where pyments come in.
 
 To set up Redcarpet.

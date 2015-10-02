@@ -31,7 +31,7 @@ Learned that you can detach a pane via `<prefix> !` (prefix is `ctrl-b` but I
 bound it to `ctrl-a` because I find the screen binding more convenient -- ie
 closer).  The following is my `~/.tmux.conf`.
 
-```bash
+{% highlight bash %}
 # Set screen-like shortcuts  (also to avoid Ctrl-b for vi users)
 set -g mouse-resize-pane on
 set -g mouse-select-pane on
@@ -47,7 +47,7 @@ bind-key k   confirm-before -p "kill-pane #W? (y/n)" kill-pane
 bind-key K   confirm-before -p "kill-window #W? (y/n)" kill-window
 bind-key S   split-window
 bind-key a   send-key 'C-a'
-```
+{% endhighlight %}
 
 The first three lines allow my mouse and tmux to interact as you'd expect from
 a GUI interface.  The rest is just rebinding to be more like the unix `screen`

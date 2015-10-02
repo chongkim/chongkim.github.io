@@ -7,12 +7,12 @@ categories: programming
 Let's say that I want to have two threads.  The main thread is waiting for the
 worker thread to do a computation, which is expected to take some time.
 
-```ruby
+{% highlight ruby %}
   x = nil
   Thread.new { sleep 1; x = 100; }
   sleep 100 while x.nil?
   puts "x = #{x}"
-```
+{% endhighlight %}
 
 This code is not efficient because the `x` will be set in 1 second but the
 while loop checks every 100 seconds, so if the thread has not completed by the
@@ -23,24 +23,24 @@ Using `Thread#wakeup`
 A better method to let another thread know that the data is ready is by using
 the `wakeup` instance method for Thread.
 
-```ruby
+{% highlight ruby %}
   x = nil
   Thread.new { sleep 1; x = 100; Thread.main.wakeup() }
   sleep 100 while x.nil?
   puts "x = #{x}"
-```
+{% endhighlight %}
 
 Now when the data is ready, the worker thread can notify the main thread
 immediately.  We can even have the main thread just stop completely and wait
 until the data is ready instead of polling the variable to see if it was set.
 This is useful if the check is expensive.
 
-```ruby
+{% highlight ruby %}
   x = nil
   Thread.new { sleep 1; x = 100; Thread.main.wakeup() }
   Thread.stop
   puts "x = #{x}"
-```
+{% endhighlight %}
 
 A problem with this method is that the notification is happening at the thread
 level.  If you have multiple variables you want to check, you have to handle it
@@ -56,7 +56,7 @@ Using `ConditionVariable`
 
 `ConditionVariable` works with `Mutex`.
 
-```ruby
+{% highlight ruby %}
   require 'thread'
   x = nil
   m = Mutex.new
@@ -66,7 +66,7 @@ Using `ConditionVariable`
     cond.wait(m)
     puts "x = #{x}"
   end
-```
+{% endhighlight %}
 
 The `cond.wait(m)` has an optional argument if you want a timeout, e.g.
 `cond.wait(m, 100)`.
@@ -77,7 +77,7 @@ annoying since you have to keep track of two variables (`Mutex` and
 `ConditionVariable` instances `m` and `cond`).  However, in the following code,
 you can get around that by using `MonitorMixin`.
 
-```ruby
+{% highlight ruby %}
   require 'monitor'
   x = nil
   x.extend(MonitorMixin)
@@ -93,7 +93,7 @@ you can get around that by using `MonitorMixin`.
     change_cond.wait_while { x.nil? }
     puts "x = #{x}"
   end
-```
+{% endhighlight %}
 
 Instead of `change_cond.wait_while { x.nil? }`, you can use
 `change_cond.wait(100)` if you want to wait a specific amount of time.
@@ -102,19 +102,19 @@ Queue
 -----
 Probably the best way is to use `Queue`.
 
-```ruby
+{% highlight ruby %}
   require 'thread'
   x = nil
   q = Queue.new
   Thread.new { sleep 1; q.push(100) }
   x = q.pop
   puts "x = #{x}"
-```
+{% endhighlight %}
 
 If the queue is empty when you call `pop`, it will wait until something is
 pushed into the queue.  There are many aliases for the methods `push` and `pop`
 
-```ruby
+{% highlight ruby %}
   # these do the same thing as push
   q.push 100
   q.enq 100
@@ -124,12 +124,12 @@ pushed into the queue.  There are many aliases for the methods `push` and `pop`
   q.pop
   q.deq
   q.shift
-```
+{% endhighlight %}
 
 `Queue` does not have a method that takes a timeout, but you can get around
 that by using `Timeout::timeout`.
 
-```ruby
+{% highlight ruby %}
   require 'thread'
   require 'timeout'
   x = nil
@@ -143,7 +143,7 @@ that by using `Timeout::timeout`.
   rescue
     puts "timed out"
   end
-```
+{% endhighlight %}
 
 `Timeout::timeout` will raise a `Timeout::Error` exception if the block does
 not complete within the timeout, so you'd need to handle it with a rescue.

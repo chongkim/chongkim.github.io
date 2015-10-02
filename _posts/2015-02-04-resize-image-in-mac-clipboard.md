@@ -24,8 +24,8 @@ was once simple. I found three programs that I had to gather from the web
 
 I pieced them together into one git repository called [pbresize](https://github.com/chongkim/pbresize). Once you install it, you can just type:
 
-```bash
+{% highlight bash %}
 $ pbresize
-```
+{% endhighlight %}
 
 to resize the image in your clipboard, and you're free to paste it anywhere.

@@ -6,7 +6,7 @@ categories: update programming
 ---
 I pushed out two changes to my blog site.  It now handles exceptions if you
 have a bad fenced block code.  For example if I tag a snippet of code to be
-````lisp`, it will break since it doesn't know about lisp.  Previously, the
+<code>```lisp</code>, it will break since it doesn't know about lisp.  Previously, the
 site would just show an ugly error page.  Now it will put "block cannot be
 interpreted" as the text inside the fenced block code.
 

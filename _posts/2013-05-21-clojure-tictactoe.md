@@ -25,7 +25,7 @@ sexp is auto-indented.  Instructions:
 
 Here's a list of Clojure functions I found useful:
 
-```clj
+{% highlight clj %}
 (keep-indexed #(vector %1 %2) '(a b c)) ; => ([0 a] [1 b] [2 c])
 
 (some #{1 2} '(1 2 3))  ; => 1
@@ -48,4 +48,4 @@ Here's a list of Clojure functions I found useful:
 
 ; you can throw an exception and catch it somewhere in you call heirarchy
 (throw (Throwable. "my message"))
-```
+{% endhighlight %}

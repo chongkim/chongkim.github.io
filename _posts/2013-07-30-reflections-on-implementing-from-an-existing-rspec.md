@@ -15,14 +15,14 @@ ordering.  This way I can work on one spec at a time in order.  Usually tests
 are built up as you go down the file, so this should make it easier to
 implement.
 
-```ruby
+{% highlight ruby %}
 RSpec.configure do |config|
   config.treat_symbols_as_metadata_keys_with_true_values = true
   config.run_all_when_everything_filtered = true
   config.filter_run :focus
   # config.order = 'random'
 end
-```
+{% endhighlight %}
 
 After getting set up with my development environment, I started to run the
 RSpec using Guard.  The first set of errors were all about non-existent files.

@@ -17,7 +17,7 @@ I created a new field called `published_at` that combined what `date` and
 know how to do it in SQL, but I wanted to find a Rails way.  Here's the final
 result:
 
-```ruby
+{% highlight ruby %}
 class CreatePublishAt < ActiveRecord::Migration
   def up
     add_column :blog_entries, :published_at, :datetime
@@ -33,19 +33,19 @@ class CreatePublishAt < ActiveRecord::Migration
     remove_column :blog_entries, :published_at
   end
 end
-```
+{% endhighlight %}
 
 **NOTE**: `published_at::date` converts `published_at` to a `date` type,
 likewise for `::time`.
 
 The alternative way to update `published_at` was to do something like this.
 
-```ruby
+{% highlight ruby %}
 # don't do this
 BlogEntry.all.each do |entry|
   entry.published_at = DateTime.new(entry.date.year, entry.date.month, entry.date, day, entry.time.hour, entry.time.min, entry.time.sec)
 end
-```
+{% endhighlight %}
 
 It's a bad habit to iterate through each object because this would generate a
 sql command for each row.  By using `update_all`, there is one sql command so
@@ -64,9 +64,9 @@ came upon this winning workflow.
 You should see that the console will try to complete the method.  If you scroll
 through, you'll see something promising `setShowPrintMargin`.  So if you call 
 
-```js
+{% highlight js %}
 editor.setShowPrintMargin(false);
-```
+{% endhighlight %}
 
 you'll see the print margin disappear.
 
@@ -81,13 +81,13 @@ websites that use the CDN links.
 
 I added a little javascript to get it working.
 
-```html
+{% highlight html %}
   <script>
     $(function() {
       $("#blog_entry_published_date").datepicker({ dateFormat: "yy-mm-dd"});
     });
   </script>
-```
+{% endhighlight %}
 
 I ran into a problem in the beginning because the example code on JQueryUI used
 this format: `datepicker("option", "dateFormat", "yy-mm-dd")` but I wasn't able

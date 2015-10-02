@@ -8,7 +8,7 @@ I've been having a hard time trying to get `capybara-webkit` (version 1.0.0)
 working on my rails app using cucumber using JRuby.  When I run `cucumber`, I
 see this error
 
-```bash
+{% highlight bash %}
   @javascript
   Scenario:
     Given I visit the home page
@@ -17,7 +17,7 @@ see this error
       features/ttt.feature:5:in `Given I visit the home page'
     Then I should have selector "#ttt"
     And I should see content "Who do you want to play first"
-```
+{% endhighlight %}
 
 I suspected it might have something to do with the jruby version, so I created
 a new Rails app using the MRI ruby and it worked perfectly.  I also tried using

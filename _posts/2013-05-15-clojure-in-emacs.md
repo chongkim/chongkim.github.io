@@ -9,12 +9,12 @@ itself was quite easy.  Assuming you have the latest emacs with package
 manager, you can look for clojure-mode.  Make sure the package manager is set
 up by putting this in your `.emacs` or `.emacs.d/init.el` file.
 
-```cl
+{% highlight cl %}
 (require 'package)
 (add-to-list 'package-archives
              '("marmalade" . "http://marmalade-repo.org/packages/") t)
 (package-initialize)
-```
+{% endhighlight %}
 
 Then do
 

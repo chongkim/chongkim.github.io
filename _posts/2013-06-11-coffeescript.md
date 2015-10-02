@@ -22,9 +22,9 @@ $ sudo npm install -g coffee-script
 
 and put this in your `~/.bashrc` file
 
-```bash
+{% highlight bash %}
 PATH="/usr/local/share/npm/bin/:$PATH"
-```
+{% endhighlight %}
 
 You can use the `coffee` command to compile your coffeescript.
 

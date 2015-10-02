@@ -16,11 +16,11 @@ example `test`, `testFoo`, `test_foo`)
 
 **myfile.py**
 
-```python
+{% highlight python %}
 def test():
   x = 1
   assert x == 2
-```
+{% endhighlight %}
 
 This test should fail.  Run it
 
@@ -45,14 +45,14 @@ FAILED (failures=1)
 
 A passing test looks like this:
 
-```bash
+{% highlight bash %}
 $ nosetests myfile.py
 .
 ----------------------------------------------------------------------
 Ran 1 test in 0.000s
 
 OK
-```
+{% endhighlight %}
 
 There is another package called `sniffer`
 

@@ -9,13 +9,13 @@ working on heroku.  Today, I modified the CSS in `app/assets/css` and pushed it
 out to heroku without running `bundle exec rake assets:precompile`.  It worked
 anyway.  I saw from the output
 
-```
+{% highlight bash %}
 ...
 -----> Preparing app for Rails asset pipeline
        Running: rake assets:precompile
        Asset precompilation completed (25.81s)
 ...
-```
+{% endhighlight %}
 
 The difference was that in this push, I deleted all the files in
 `public/assets` and committed those deletes.  I suspect that Rails sees that

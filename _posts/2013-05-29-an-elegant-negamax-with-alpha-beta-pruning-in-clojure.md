@@ -8,7 +8,7 @@ I've been reading up on [Negamax with Alpha-Beta
 Pruning](http://en.wikipedia.org/wiki/Negamax) and I need to write the
 following pseudocode in Clojure.
 
-```js
+{% highlight js %}
 function negamax(node, depth, alpha, beta, color)
     if node is a terminal node or depth = 0
         return color * the heuristic value of node
@@ -20,7 +20,7 @@ function negamax(node, depth, alpha, beta, color)
             if val > alpha
                 alpha := val
         return alpha
-```
+{% endhighlight %}
 
 At first I was struggling because I needed to figure out a way to modify a
 variable and then break a loop.  The code was starting to get ugly and I knew I
@@ -33,7 +33,7 @@ it was trying to find the max value of it's children.  This meant that once I
 have the list, I just need to find the max and I'm done.  The resulting clojure
 code looks like this.
 
-```clj
+{% highlight clj %}
 (defn negamax [node alpha beta color]
   (let [node-value (evaluate-leaf node)]
     (if node-value
@@ -44,7 +44,7 @@ code looks like this.
            (take-while #(< % beta))
            (cons alpha)
            (apply max)))))
-```
+{% endhighlight %}
 
 Let's step through the code.
 
@@ -70,9 +70,9 @@ In the else clause
 
 **Note** The return value needs to have the sign set by the color in the initial call, i.e.
 
-```clj
+{% highlight clj %}
 (* color (negamax node alpha beta color))
-```
+{% endhighlight %}
 
 **Note** The flaw in this code is that it is not updating the alpha after
 checking each child.  It does get set when the cousins are calculated.  This
@@ -85,21 +85,21 @@ pseudocode.
 As a side note, we see `->>`.  That is just a macro to reduce embedded
 parentheses.  For example, these two statements are identical.
 
-```clj
+{% highlight clj %}
 (->> x (foo 1 2) (bar 3 4))
 
 (bar 3 4 (foo 1 2 x))
-```
+{% endhighlight %}
 
 There is also `->` that works the same way but puts the previous form at the
 beginning instead of the end of the argument list.  So in this case, these two
 statements are equivalent.
 
-```clj
+{% highlight clj %}
 (-> x (foo 1 2) (bar 3 4))
 
 (bar (foo x 1 2) 3 4)
-```
+{% endhighlight %}
 
 Back to the code.
 

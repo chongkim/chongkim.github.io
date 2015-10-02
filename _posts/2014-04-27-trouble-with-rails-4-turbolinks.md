@@ -16,19 +16,19 @@ The easiest solution is to use jquery.turbolinks
 
 Gemfile:
 
-```ruby
+{% highlight ruby %}
 gem 'jquery-turbolinks'
-```
+{% endhighlight %}
 
 app/assets/javascripts/application.js:
 
-```javascript
+{% highlight js %}
 //= require jquery
 //= require jquery.turbolink
 //= require jquery_ujs
 //= require turbolinks
 //= require_tree .
-```
+{% endhighlight %}
 
 This update the jQuery so that `$(document).ready()` will also register to
 turbolink's `page:load` event.  Now everything should be working normally.
