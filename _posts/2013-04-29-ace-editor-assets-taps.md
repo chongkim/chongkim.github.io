@@ -2,7 +2,7 @@
 layout: post
 title: Ace Editor, Assets, taps
 date: 2013-04-29 15:54:00
-categories: update programming
+categories: programming
 ---
 Just added the Ace editor into my blog.  It was quite an ordeal getting the
 content passed from the editor into the textarea so it can be processed by

@@ -2,7 +2,7 @@
 layout: post
 title: HR Stuff and Blog UI 
 date: 2013-05-03 19:16:40
-categories: update programming
+categories: programming
 ---
 HR Stuff and Blog UI Updates	Spent most of the day getting my paperwork done
 for 8th Light.  I will be starting as a resident apprentice on Monday 5/6.

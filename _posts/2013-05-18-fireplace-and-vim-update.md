@@ -2,7 +2,7 @@
 layout: post
 title: Fireplace and Vim 
 date: 2013-05-18 00:35:58
-categories: update programming
+categories: programming
 ---
 I finally figured out what was wrong with my fireplace setup.  Fireplace is a
 vim plugin that allows you to interact with the Clojure REPL.  My problem was

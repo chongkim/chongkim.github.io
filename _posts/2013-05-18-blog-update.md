@@ -2,7 +2,7 @@
 layout: post
 title: Blog 
 date: 2013-05-18 00:29:19
-categories: update programming
+categories: programming
 ---
 I pushed out two changes to my blog site.  It now handles exceptions if you
 have a bad fenced block code.  For example if I tag a snippet of code to be
