@@ -24,12 +24,14 @@ followed the instructions based on this [El Capitan and Homebrew] and it works n
   <li> Reboot machine and log in as usual</li>
   <li> In the terminal type</li>
 {% highlight bash %}
-$ sudo chflags norestricted /usr/local
+$ sudo chflags -R norestricted /usr/local
 $ sudo chown -R $(whoami):admin /usr/local
 {% endhighlight %}
   <li> Reboot back to recovery mode</li>
   <li> Type <code>csrutil enable</code> in terminal</li>
   <li>Reboot back to to OS X</li>
 </ol>
+
+If you want to look at the flags on a directory you can do `ls -lO dirname`.
 
 [El Capitan and Homebrew]: https://github.com/Homebrew/homebrew/blob/master/share/doc/homebrew/El_Capitan_and_Homebrew.md
