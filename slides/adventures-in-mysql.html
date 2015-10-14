@@ -197,11 +197,11 @@
             <div class="fragment" data-markdown>
               ```sql
               mysql> create table address(
-              -> id bigint primary key auto_increment,
-              -> street varchar(50),
-              -> city varchar(40),
-              -> state varchar(2)
-              -> person_id bigint);
+                  -> id bigint primary key auto_increment,
+                  -> street varchar(50),
+                  -> city varchar(40),
+                  -> state varchar(2)
+                  -> person_id bigint);
               Query OK, 0 rows affected (0.02 sec)
               ```
             </div>
@@ -230,10 +230,15 @@
             * Want to add column, `id`
             * `id` should show up first
           </section>
-          <section data-markdown>
-            Help on `alter table`
-            ```sql
-mysql> help alter table
+          <section>
+            <p data-markdown>Help on `alter table`</p>
+            <div data-markdown>
+              ```sql
+              mysql> help alter table
+              ```
+            </div>
+            <div class="fragment" data-markdown>
+              ```
 Name: 'ALTER TABLE'
 Description:
 Syntax:
@@ -357,7 +362,8 @@ For information on troubleshooting ALTER TABLE, see
 http://dev.mysql.com/doc/refman/5.6/en/alter-table-problems.html.
 
 URL: http://dev.mysql.com/doc/refman/5.6/en/alter-table.html
-          ```
+              ```
+            </div>
           </section>
           <section>
             Altering<code> person</code>
@@ -447,40 +453,106 @@ URL: http://dev.mysql.com/doc/refman/5.6/en/alter-table.html
               | Field     | Type        | Null | Key | Default | Extra          |
               +-----------+-------------+------+-----+---------+----------------+
               | id        | bigint(20)  | NO   | PRI | NULL    | auto_increment |
-              | street    | varchar(50) | YES  |     | NULL    |           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|
-              | city      | varchar(40) | YES  |     | NULL    |           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|
-              | state     | varchar(2)  | YES  |     | NULL    |           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|
-              | person_id | bigint(20)  | YES  |     | NULL    |           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|
+              | street    | varchar(50) | YES  |     | NULL    |           &nbsp;    |
+              | city      | varchar(40) | YES  |     | NULL    |           &nbsp;    |
+              | state     | varchar(2)  | YES  |     | NULL    |           &nbsp;    |
+              | person_id | bigint(20)  | YES  |     | NULL    |           &nbsp;    |
               +-----------+-------------+------+-----+---------+----------------+
               5 rows in set (0.00 sec)
               ```
             </div>
           </section>
-          <section> joins</section>
-          <section> outer joins</section>
-          <section> self joins</section>
-        </section>
-        <section>
-        Help
-        </section>
-        <section> join tables </section>
-        <section>
-          normalizing
-          don't repeat yourself
-          keep relevant info together
-          non-relevant info apart
           <section>
+            Inserting into address
+            <div data-markdown>
+              ```sql
+              mysql> select * from person;
+              +----+-------+------------+
+              | id | name  | title      |
+              +----+-------+------------+
+              |  1 | chong | programmer |
+              |  2 | jim   | cto        |
+              +----+-------+------------+
+              2 rows in set (0.00 sec)
+              ```
+            </div>
+            <div class="fragment" data-markdown>
+              ```sql
+              mysql> insert into address values (null, '123 Sesame St', 'Tampa', 'FL', 1);
+              Query OK, 1 row affected (0.00 sec)
+              ```
+            </div>
+            <div class="fragment" data-markdown>
+              ```sql
+              mysql> select * from address;
+              +----+---------------+-------+-------+-----------+
+              | id | street        | city  | state | person_id |
+              +----+---------------+-------+-------+-----------+
+              |  1 | 123 Sesame St | Tampa | FL    |         1 |
+              +----+---------------+-------+-------+-----------+
+              1 row in set (0.00 sec)
+              ```
+            </div>
+          </section>
+          <section>
+            <p>Joins</p>
 
+            <div data-markdown>
+              ```sql
+              mysql> select name, title, street, city, state
+                  -> from person join address on person.id = address.person_id;
+              ```
+            </div>
+            <div class="fragment" data-markdown>
+              ```sql
+              +-------+------------+---------------+-------+-------+
+              | name  | title      | street        | city  | state |
+              +-------+------------+---------------+-------+-------+
+              | chong | programmer | 123 Sesame St | Tampa | FL    |
+              +-------+------------+---------------+-------+-------+
+              1 row in set (0.00 sec)
+              ```
+            </div>
+          </section>
+          <section data-markdown>
+            Inserting another address for 'chong'
+
+            <div data-markdown>
+              ```sql
+              mysql> insert into address values (null, '1313 Mockingbird Ln', 'Tampa', 'FL', 1);
+              Query OK, 1 row affected (0.00 sec)
+
+              mysql> select name, title, street, city, state from person join address on person.id = address.person_id;
+              +-------+------------+---------------------+-------+-------+
+              | name  | title      | street           &nbsp;  | city  | state |
+              +-------+------------+---------------------+-------+-------+
+              | chong | programmer | 123 Sesame St       | Tampa | FL    |
+              | chong | programmer | 1313 Mockingbird Ln | Tampa | FL    |
+              +-------+------------+---------------------+-------+-------+
+              2 rows in set (0.00 sec)
+              ```
+            </div>
           </section>
         </section>
-        <section> Hierarchical data
-          o http://mikehillyer.com/articles/managing-hierarchical-data-in-mysql/
+        <section data-markdown>
+          Normalizing
+
+          * Don't repeat yourself
+          * Keep relevant info together
+          * Kepp non-relevant info apart
         </section>
-        <section>o \P less -S </section>
-        <section>o Engines
-          o myisam
-          o innodb
-          o blackhole
+        <section> outer joins</section>
+        <section> self joins</section>
+        <section> join tables </section>
+        <section> Hierarchical data
+          - http://mikehillyer.com/articles/managing-hierarchical-data-in-mysql/
+        </section>
+        <section> \P less -S </section>
+        <section data-markdown>
+          Engines
+          * myisam
+          * innodb
+          * blackhole
         </section>
         <section> multiple servers </section>
         <section> replication </section>
