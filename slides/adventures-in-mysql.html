@@ -40,7 +40,8 @@
             <h1>1995</h1>
           </section>
           <section>
-            <h2>Handling Persistence</h2>
+            <p>Handling Persistence</p>
+
             <ul>
               <li class="fragment">Flat files</li>
               <li class="fragment"><code>fseek()</code> and <code>ftell()</code>
@@ -51,17 +52,21 @@
             <img src="img/introduction_to_algorithms.jpg" alt=""/>
           </section>
           <section data-markdown>
-            ## Introduction To Algorithms
-            * Red Black Tree [pic]
-            * B-Tree [pic]
+            Introduction To Algorithms
+            * Red Black Tree
+            * B-Tree
           </section>
         </section>
         <section>
           <section>
-            <h2>Crash Course in SQL</h2>
+            Crash Course in SQL
             <div class="fragment" data-markdown>
               ```sql
               mysql> select 1;
+              ```
+              </div>
+            <div class="fragment" data-markdown>
+              ```sql
               +---+
               | 1 |
               +---+
@@ -101,6 +106,7 @@
             ```
           </section>
           <section data-markdown>
+            Using `SELECT`
             ```sql
             mysql> select 1 + 2 as result, database(), version(), user();
             +--------+------------+-----------+----------------+
@@ -112,15 +118,13 @@
             ```
           </section>
           <section>
-            <div>
-              Tables
-            </div>
+            Creating person table
             <div class="fragment" data-markdown>
               ```sql
               -- file: a.sql
               create table person(
-              name varchar(100),
-              title varchar(100)
+                name varchar(100),
+                title varchar(100)
               );
               ```
             </div>
@@ -142,11 +146,19 @@
               Query OK, 1 row affected (0.00 sec)
               ```
             </div>
+            <aside class="notes">
+              Notice alternative way to insert
+            </aside>
           </section>
           <section>
+            Viewing person table
             <div data-markdown>
               ```sql
               mysql> select * from person;
+              ```
+            </div>
+            <div class="fragment" data-markdown>
+              ```sql
               +-------+------------+
               | name  | title      |
               +-------+------------+
@@ -169,9 +181,10 @@
             </div>
           </section>
           <section>
+            Creating address table
             <div data-markdown>
               ```sql
-              mysql> create table address (id bigint);
+              mysql> create table address (id bigint); -- oops
               Query OK, 0 rows affected (0.01 sec)
               ```
             </div>
@@ -199,6 +212,26 @@
             </aside>
           </section>
           <section data-markdown>
+            What we have so far
+
+            ```sql
+            SELECT .. [ FROM tbl [ WHERE ... ] ]
+
+            CREATE TABLE tbl ( ... )
+
+            INSERT INTO tbl VALUES (...)
+
+            DROP TABLE tbl
+            ```
+          </section>
+          <section data-markdown>
+            Altering person table
+
+            * Want to add column, `id`
+            * `id` should show up first
+          </section>
+          <section data-markdown>
+            Help on `alter table`
             ```sql
 mysql> help alter table
 Name: 'ALTER TABLE'
@@ -327,6 +360,8 @@ URL: http://dev.mysql.com/doc/refman/5.6/en/alter-table.html
           ```
           </section>
           <section>
+            Altering<code> person</code>
+
             <div data-markdown style="width: 1050px">
               ```sql
               mysql> alter table person add id bigint primary key auto_increment first;
@@ -344,6 +379,80 @@ URL: http://dev.mysql.com/doc/refman/5.6/en/alter-table.html
               |  2 | jim   | cto        |
               +----+-------+------------+
               2 rows in set (0.00 sec)
+              ```
+            </div>
+          </section>
+          <section>
+            Checking on a<code>ddress</code>
+            <div class="fragment" data-markdown>
+              ```sql
+              mysql> select * from address;
+              Empty set (0.00 sec)
+              ```
+            </div>
+            <div class="fragment" data-markdown>
+              ```sql
+              mysql> show create table address;
+              +---------+-----------------------------------------------------------
+              ----------------------------------------------------------------------
+              ----------------------------------------------------------------------
+              ----------------------------------------------------------------------
+              ----+
+              | Table   | Create Table
+                  |
+              +---------+-----------------------------------------------------------
+              ----------------------------------------------------------------------
+              ----------------------------------------------------------------------
+              ----------------------------------------------------------------------
+              ----+
+
+              | address | CREATE TABLE `address` (
+                `id` bigint(20) NOT NULL AUTO_INCREMENT,
+                `street` varchar(50) DEFAULT NULL,
+                `city` varchar(40) DEFAULT NULL,
+                `state` varchar(2) DEFAULT NULL,
+                `person_id` bigint(20) DEFAULT NULL,
+                PRIMARY KEY (`id`)
+              ) ENGINE=InnoDB DEFAULT CHARSET=utf8 |
+              +---------+-----------------------------------------------------------
+              ----------------------------------------------------------------------
+              ----------------------------------------------------------------------
+              ----------------------------------------------------------------------
+              ----+
+              1 row in set (0.00 sec)
+              ```
+            </div>
+          </section>
+          <section>
+            <div data-markdown>
+              ```sql
+              mysql> show create table address\G
+              *************************** 1. row ***************************
+                     Table: address
+              Create Table: CREATE TABLE `address` (
+                `id` bigint(20) NOT NULL AUTO_INCREMENT,
+                `street` varchar(50) DEFAULT NULL,
+                `city` varchar(40) DEFAULT NULL,
+                `state` varchar(2) DEFAULT NULL,
+                `person_id` bigint(20) DEFAULT NULL,
+                PRIMARY KEY (`id`)
+              ) ENGINE=InnoDB DEFAULT CHARSET=utf8
+              1 row in set (0.00 sec)
+              ```
+            </div>
+            <div class="fragment" data-markdown>
+              ```sql
+              mysql> describe address;
+              +-----------+-------------+------+-----+---------+----------------+
+              | Field     | Type        | Null | Key | Default | Extra          |
+              +-----------+-------------+------+-----+---------+----------------+
+              | id        | bigint(20)  | NO   | PRI | NULL    | auto_increment |
+              | street    | varchar(50) | YES  |     | NULL    |           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|
+              | city      | varchar(40) | YES  |     | NULL    |           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|
+              | state     | varchar(2)  | YES  |     | NULL    |           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|
+              | person_id | bigint(20)  | YES  |     | NULL    |           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|
+              +-----------+-------------+------+-----+---------+----------------+
+              5 rows in set (0.00 sec)
               ```
             </div>
           </section>
