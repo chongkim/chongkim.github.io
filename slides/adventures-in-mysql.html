@@ -327,14 +327,9 @@ URL: http://dev.mysql.com/doc/refman/5.6/en/alter-table.html
           ```
           </section>
           <section>
-            <aside class="notes" data-markdown>
-              need to add id to reference a row
-
-              ... how to set the id values?
-            </aside>
-            <div data-markdown>
+            <div data-markdown style="width: 1050px">
               ```sql
-              mysql> alter table person add id bigint first;
+              mysql> alter table person add id bigint primary key auto_increment first;
               Query OK, 0 rows affected (0.02 sec)
               Records: 0  Duplicates: 0  Warnings: 0
               ```
@@ -342,13 +337,13 @@ URL: http://dev.mysql.com/doc/refman/5.6/en/alter-table.html
             <div class="fragment" data-markdown>
               ```sql
               mysql> select * from person;
-              +------+-------+------------+
-              | id   | name  | title      |
-              +------+-------+------------+
-              | NULL | chong | programmer |
-              | NULL | jim   | cto        |
-              +------+-------+------------+
-              2 rows in set (0.00 sec) 
+              +----+-------+------------+
+              | id | name  | title      |
+              +----+-------+------------+
+              |  1 | chong | programmer |
+              |  2 | jim   | cto        |
+              +----+-------+------------+
+              2 rows in set (0.00 sec)
               ```
             </div>
           </section>
