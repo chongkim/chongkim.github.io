@@ -59,51 +59,68 @@
         </section>
         <section>
           <section>
-            Crash Course in SQL
+            <h1>BASIC SQL</h1>
+          </section>
+          <section data-markdown>
+            Help
+
+            * help contents
+            * help data definition
+            * help data manipulation
+            * help functions
+          </section>
+          <section>
+            <p>Crash Course in SQL</p>
+
+            <ul>
+              <li>display results (like a print statement)</li>
+              <li>create a table</li>
+              <li>insert into a table</li>
+              <li>delete from a table</li>
+              <li>select rows from a table</li>
+              <li>drop a table</li>
+            </ul>
+          </section>
+          <section>
+            <p>Displaying results</p>
             <div class="fragment" data-markdown>
               ```sql
-              mysql> select 1;
+              mysql> select 'hello world';
               ```
               </div>
             <div class="fragment" data-markdown>
               ```sql
-              +---+
-              | 1 |
-              +---+
-              | 1 |
-              +---+
-              1 row in set (0.00 sec)
++-------------+
+| hello world |
++-------------+
+| hello world |
++-------------+
+1 row in set (0.00 sec)
               ```
             </div>
 
             <div class="fragment" data-markdown>
               ```sql
-              mysql> select 1 result;
-              +--------+
-              | result |
-              +--------+
-              |      1 |
-              +--------+
-              1 row in set (0.00 sec)
+mysql> select 'hello world' result;
++-------------+
+| result      |
++-------------+
+| hello world |
++-------------+
+1 row in set (0.00 sec)
               ```
             </div>
             <div class="fragment" data-markdown>
               ```sql
-              mysql> select 1 `my result`; -- can work with ' or "
-              +-----------+
-              | my result |
-              +-----------+
-              |         1 |
-              +-----------+
-              1 row in set (0.00 sec)
+mysql> select 'hello world' as `result`;
++-------------+
+| result      |
++-------------+
+| hello world |
++-------------+
+1 row in set (0.00 sec)
               ```
             </div>
-          </section>
-          <section data-markdown>
-            In oracle
-            ```sql
-            select 1 from dual;
-            ```
           </section>
           <section data-markdown>
             Using `SELECT`
@@ -224,6 +241,9 @@
             DROP TABLE tbl
             ```
           </section>
+        </section>
+        <section>
+          <section><h1>Making changes</h1></section>
           <section data-markdown>
             Altering person table
 
@@ -393,12 +413,20 @@ URL: http://dev.mysql.com/doc/refman/5.6/en/alter-table.html
             <div class="fragment" data-markdown>
               ```sql
               mysql> select * from address;
+              ```
+            </div>
+            <div class="fragment" data-markdown>
+              ```sql
               Empty set (0.00 sec)
               ```
             </div>
             <div class="fragment" data-markdown>
               ```sql
               mysql> show create table address;
+              ```
+            </div>
+            <div class="fragment" data-markdown>
+              ```sql
               +---------+-----------------------------------------------------------
               ----------------------------------------------------------------------
               ----------------------------------------------------------------------
@@ -494,6 +522,11 @@ URL: http://dev.mysql.com/doc/refman/5.6/en/alter-table.html
               ```
             </div>
           </section>
+        </section>
+        <section>
+          <section>
+            <h1>Look up info from multiple tables</h1>
+          </section>
           <section>
             <p>Joins</p>
 
@@ -513,16 +546,21 @@ URL: http://dev.mysql.com/doc/refman/5.6/en/alter-table.html
               1 row in set (0.00 sec)
               ```
             </div>
+            <aside class="notes">
+              No jim
+            </aside>
           </section>
-          <section data-markdown>
+          <section>
             Inserting another address for 'chong'
 
             <div data-markdown>
               ```sql
-              mysql> insert into address values (null, '1313 Mockingbird Ln', 'Tampa', 'FL', 1);
+              mysql> insert into address values
+                  -> (null, '1313 Mockingbird Ln', 'Tampa', 'FL', 1);
               Query OK, 1 row affected (0.00 sec)
 
-              mysql> select name, title, street, city, state from person join address on person.id = address.person_id;
+              mysql> select name, title, street, city, state
+                  -> from person join address on person.id = address.person_id;
               +-------+------------+---------------------+-------+-------+
               | name  | title      | street           &nbsp;  | city  | state |
               +-------+------------+---------------------+-------+-------+
@@ -533,13 +571,70 @@ URL: http://dev.mysql.com/doc/refman/5.6/en/alter-table.html
               ```
             </div>
           </section>
+          <section>
+            Status: Junior Level
+          </section>
         </section>
-        <section data-markdown>
-          Normalizing
+        <section>
+          <section>
+            <h1>Designing a schema</h1>
+          </section>
+          <section data-markdown>
+            Normalizing
 
-          * Don't repeat yourself
-          * Keep relevant info together
-          * Kepp non-relevant info apart
+            * Don't repeat yourself
+            * Keep relevant info together
+            * Keep non-relevant info apart
+          </section>
+          <section>
+            <div data-markdown>
+              Bad
+              ```sql
+              create table person(
+                id bigint primary key auto_increment,
+                phone1 varchar(20),
+                phone2 varchar(20),
+                cubicle_location varchar(100),
+                cubicle_type enum('small','medium','large'),
+                name varchar(100)
+              );
+              ```
+            </div>
+          </section>
+          <section>
+            <div data-markdown>
+              Good
+              ```sql
+              create table person(
+                id bigint primary key auto_increment,
+                name varchar(100),
+                cubicle_id bigint
+              );
+
+              create table phone(
+                id bigint primary key auto_increment,
+                person_id bigint,
+                ph_num varchar(20)
+              );
+
+              create table cubicle(
+                id bigint primary key auto_increment,
+                location varchar(100),
+                type enum('small','medium','large')
+              );
+              ```
+            </div>
+          </section>
+          <section data-markdown>
+            Multiple databases
+            ```sql
+            create database mydb;
+
+            drop database mydb;
+
+            select * from mydb.tbl;
+            ```
+          </section>
         </section>
         <section> outer joins</section>
         <section> self joins</section>
@@ -555,6 +650,11 @@ URL: http://dev.mysql.com/doc/refman/5.6/en/alter-table.html
           * blackhole
         </section>
         <section> multiple servers </section>
+        <section>
+          show variables;
+
+          use of \P
+        </section>
         <section> replication </section>
         <section> triggers </section>
         <section> variables </section>
@@ -576,6 +676,7 @@ URL: http://dev.mysql.com/doc/refman/5.6/en/alter-table.html
         <section> stored procedure</section>
         <section> varchar vs binary</section>
         <section> ci</section>
+        <section>my.cnf</section>
         <section> subqueries
           <section> one row</section>
           <section> multiple rows</section>
