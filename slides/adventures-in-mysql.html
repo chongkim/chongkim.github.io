@@ -35,39 +35,329 @@
     <body>
     <div class="reveal">
       <div class="slides">
-
-        <section data-markdown>
-          <script type="text/template">
-            ## How it all started
-            Flat Files
-
-            * using <code>fseek()</code> and <code>ftell()</code> or mmap(), you can treat a file like memory
-            * set own data structures as files
-            * use Cohen white book
-            * didn't know much about databases, no knowledge of SQL
-            * MySQL was just starting out
-          </script>
+        <section>
+          <section>
+            <h1>1995</h1>
+          </section>
+          <section>
+            <h2>Handling Persistence</h2>
+            <ul>
+              <li class="fragment">Flat files</li>
+              <li class="fragment"><code>fseek()</code> and <code>ftell()</code>
+              <li class="fragment"><code>mmap()</code></li>
+            </ul>
+          </section>
+          <section>
+            <img src="img/introduction_to_algorithms.jpg" alt=""/>
+          </section>
+          <section data-markdown>
+            ## Introduction To Algorithms
+            * Red Black Tree [pic]
+            * B-Tree [pic]
+          </section>
         </section>
         <section>
-          <section id="now"> Crash course in SQL </section>
-          <section>dual</section>
-          <section data-markdown>
-            <script type="text/template">
-            ```
-            SELECT x FROM foo WHERE x = 1;
-            ```
+          <section>
+            <h2>Crash Course in SQL</h2>
+            <div class="fragment" data-markdown>
+              ```sql
+              mysql> select 1;
+              +---+
+              | 1 |
+              +---+
+              | 1 |
+              +---+
+              1 row in set (0.00 sec)
+              ```
+            </div>
 
+            <div class="fragment" data-markdown>
+              ```sql
+              mysql> select 1 result;
+              +--------+
+              | result |
+              +--------+
+              |      1 |
+              +--------+
+              1 row in set (0.00 sec)
+              ```
+            </div>
+            <div class="fragment" data-markdown>
+              ```sql
+              mysql> select 1 `my result`; -- can work with ' or "
+              +-----------+
+              | my result |
+              +-----------+
+              |         1 |
+              +-----------+
+              1 row in set (0.00 sec)
+              ```
+            </div>
+          </section>
+          <section data-markdown>
+            In oracle
+            ```sql
+            select 1 from dual;
             ```
-            <foo>bar</foo>
+          </section>
+          <section data-markdown>
+            ```sql
+            mysql> select 1 + 2 as result, database(), version(), user();
+            +--------+------------+-----------+----------------+
+            | result | database() | version() | user()         |
+            +--------+------------+-----------+----------------+
+            |      3 | ckim_db    | 5.6.22    | ckim@localhost |
+            +--------+------------+-----------+----------------+
+            1 row in set (0.00 sec)
             ```
-            </script>
+          </section>
+          <section>
+            <div>
+              Tables
+            </div>
+            <div class="fragment" data-markdown>
+              ```sql
+              -- file: a.sql
+              create table person(
+              name varchar(100),
+              title varchar(100)
+              );
+              ```
+            </div>
+            <div class="fragment" data-markdown>
+              ```sql
+              mysql> \. a.sql
+              Query OK, 0 rows affected (0.02 sec)
+              ```
+            </div>
+            <div class="fragment" data-markdown>
+              ```sql
+              mysql> insert into person values ('chong', 'programmer');
+              Query OK, 1 row affected (0.03 sec)
+              ```
+            </div>
+            <div class="fragment" data-markdown>
+              ```sql
+              mysql> insert into person(name, title) values ('jim', 'cto');
+              Query OK, 1 row affected (0.00 sec)
+              ```
+            </div>
+          </section>
+          <section>
+            <div data-markdown>
+              ```sql
+              mysql> select * from person;
+              +-------+------------+
+              | name  | title      |
+              +-------+------------+
+              | chong | programmer |
+              | jim   | cto        |
+              +-------+------------+
+              2 rows in set (0.00 sec)
+              ```
+            </div>
+            <div class="fragment" data-markdown>
+              ```sql
+              mysql> select * from person where name='chong';
+              +-------+------------+
+              | name  | title      |
+              +-------+------------+
+              | chong | programmer |
+              +-------+------------+
+              1 row in set (0.00 sec)
+              ```
+            </div>
+          </section>
+          <section>
+            <div data-markdown>
+              ```sql
+              mysql> create table address (id bigint);
+              Query OK, 0 rows affected (0.01 sec)
+              ```
+            </div>
+            <div class="fragment" data-markdown>
+              ```sql
+              mysql> drop table address;
+              Query OK, 0 rows affected (0.01 sec)
+              ```
+            </div>
+            <div class="fragment" data-markdown>
+              ```sql
+              mysql> create table address(
+              -> id bigint primary key auto_increment,
+              -> street varchar(50),
+              -> city varchar(40),
+              -> state varchar(2));
+              Query OK, 0 rows affected (0.02 sec)
+              ```
+            </div>
+          </section>
+          <section data-markdown>
+            ```sql
+mysql> help alter table
+Name: 'ALTER TABLE'
+Description:
+Syntax:
+ALTER [IGNORE] TABLE tbl_name
+    [alter_specification [, alter_specification] ...]
+    [partition_options]
+
+alter_specification:
+    table_options
+  | ADD [COLUMN] col_name column_definition
+        [FIRST | AFTER col_name ]
+  | ADD [COLUMN] (col_name column_definition,...)
+  | ADD {INDEX|KEY} [index_name]
+        [index_type] (index_col_name,...) [index_option] ...
+  | ADD [CONSTRAINT [symbol]] PRIMARY KEY
+        [index_type] (index_col_name,...) [index_option] ...
+  | ADD [CONSTRAINT [symbol]]
+        UNIQUE [INDEX|KEY] [index_name]
+        [index_type] (index_col_name,...) [index_option] ...
+  | ADD FULLTEXT [INDEX|KEY] [index_name]
+        (index_col_name,...) [index_option] ...
+  | ADD SPATIAL [INDEX|KEY] [index_name]
+        (index_col_name,...) [index_option] ...
+  | ADD [CONSTRAINT [symbol]]
+        FOREIGN KEY [index_name] (index_col_name,...)
+        reference_definition
+  | ALGORITHM [=] {DEFAULT|INPLACE|COPY}
+  | ALTER [COLUMN] col_name {SET DEFAULT literal | DROP DEFAULT}
+  | CHANGE [COLUMN] old_col_name new_col_name column_definition
+        [FIRST|AFTER col_name]
+  | LOCK [=] {DEFAULT|NONE|SHARED|EXCLUSIVE}
+  | MODIFY [COLUMN] col_name column_definition
+        [FIRST | AFTER col_name]
+  | DROP [COLUMN] col_name
+  | DROP PRIMARY KEY
+  | DROP {INDEX|KEY} index_name
+  | DROP FOREIGN KEY fk_symbol
+  | DISABLE KEYS
+  | ENABLE KEYS
+  | RENAME [TO|AS] new_tbl_name
+  | ORDER BY col_name [, col_name] ...
+  | CONVERT TO CHARACTER SET charset_name [COLLATE collation_name]
+  | [DEFAULT] CHARACTER SET [=] charset_name [COLLATE [=] collation_name]
+  | DISCARD TABLESPACE
+  | IMPORT TABLESPACE
+  | FORCE
+  | ADD PARTITION (partition_definition)
+  | DROP PARTITION partition_names
+  | TRUNCATE PARTITION {partition_names | ALL}
+  | COALESCE PARTITION number
+  | REORGANIZE PARTITION partition_names INTO (partition_definitions)
+  | EXCHANGE PARTITION partition_name WITH TABLE tbl_name
+  | ANALYZE PARTITION {partition_names | ALL}
+  | CHECK PARTITION {partition_names | ALL}
+  | OPTIMIZE PARTITION {partition_names | ALL}
+  | REBUILD PARTITION {partition_names | ALL}
+  | REPAIR PARTITION {partition_names | ALL}
+  | REMOVE PARTITIONING
+
+index_col_name:
+    col_name [(length)] [ASC | DESC]
+
+index_type:
+    USING {BTREE | HASH}
+
+index_option:
+    KEY_BLOCK_SIZE [=] value
+  | index_type
+  | WITH PARSER parser_name
+  | COMMENT 'string'
+
+table_options:
+    table_option [[,] table_option] ...  (see CREATE TABLE options)
+
+partition_options:
+    (see CREATE TABLE options)
+
+ALTER TABLE changes the structure of a table. For example, you can add
+or delete columns, create or destroy indexes, change the type of
+existing columns, or rename columns or the table itself. You can also
+change characteristics such as the storage engine used for the table or
+the table comment.
+
+Following the table name, specify the alterations to be made. If none
+are given, ALTER TABLE does nothing.
+
+The syntax for many of the permissible alterations is similar to
+clauses of the CREATE TABLE statement. See [HELP CREATE TABLE], for
+more information.
+
+table_options signifies table options of the kind that can be used in
+the CREATE TABLE statement, such as ENGINE, AUTO_INCREMENT,
+AVG_ROW_LENGTH, MAX_ROWS, or ROW_FORMAT. For a list of all table
+options and a description of each, see [HELP CREATE TABLE]. However,
+ALTER TABLE ignores the DATA DIRECTORY and INDEX DIRECTORY table
+options.
+
+partition_options signifies options that can be used with partitioned
+tables for repartitioning, for adding, dropping, merging, and splitting
+partitions, and for performing partitioning maintenance. It is possible
+for an ALTER TABLE statement to contain a PARTITION BY or REMOVE
+PARTITIONING clause in an addition to other alter specifications, but
+the PARTITION BY or REMOVE PARTITIONING clause must be specified last
+after any other specifications. The ADD PARTITION, DROP PARTITION,
+COALESCE PARTITION, REORGANIZE PARTITION, EXCHANGE PARTITION, ANALYZE
+PARTITION, CHECK PARTITION, and REPAIR PARTITION options cannot be
+combined with other alter specifications in a single ALTER TABLE, since
+the options just listed act on individual partitions. For more
+information about partition options, see [HELP CREATE TABLE], and
+http://dev.mysql.com/doc/refman/5.6/en/alter-table-partition-operations
+.html. For information about and examples of ALTER TABLE ... EXCHANGE
+PARTITION statements, see
+http://dev.mysql.com/doc/refman/5.6/en/partitioning-management-range-li
+st.html.
+
+Some operations may result in warnings if attempted on a table for
+which the storage engine does not support the operation. These warnings
+can be displayed with SHOW WARNINGS. See [HELP SHOW WARNINGS].
+
+For information on troubleshooting ALTER TABLE, see
+http://dev.mysql.com/doc/refman/5.6/en/alter-table-problems.html.
+
+URL: http://dev.mysql.com/doc/refman/5.6/en/alter-table.html
+          ```
+          </section>
+          <section>
+            <div data-markdown>
+              ```sql
+              mysql> alter table person add id bigint first;
+              Query OK, 0 rows affected (0.02 sec)
+              Records: 0  Duplicates: 0  Warnings: 0
+              ```
+            </div>
+            <div class="fragment" data-markdown>
+              ```sql
+              mysql> select * from person;
+              +------+-------+------------+
+              | id   | name  | title      |
+              +------+-------+------------+
+              | NULL | chong | programmer |
+              | NULL | jim   | cto        |
+              +------+-------+------------+
+              2 rows in set (0.00 sec) 
+              ```
+            </div>
           </section>
           <section> joins</section>
           <section> outer joins</section>
           <section> self joins</section>
         </section>
+        <section>
+        Help
+        </section>
         <section> join tables </section>
-        <section> normalizing</section>
+        <section>
+          normalizing
+          don't repeat yourself
+          keep relevant info together
+          non-relevant info apart
+          <section>
+
+          </section>
+        </section>
         <section> Hierarchical data
           o http://mikehillyer.com/articles/managing-hierarchical-data-in-mysql/
         </section>
@@ -141,7 +431,6 @@
         { src: 'plugin/notes/notes.js', async: true }
       ]
     });
-
     </script>
   </body>
 </html>
