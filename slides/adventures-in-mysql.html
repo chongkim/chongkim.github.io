@@ -138,16 +138,10 @@ mysql> select 'hello world' as `result`;
             Creating person table
             <div class="fragment" data-markdown>
               ```sql
-              -- file: a.sql
-              create table person(
-                name varchar(100),
-                title varchar(100)
-              );
-              ```
-            </div>
-            <div class="fragment" data-markdown>
-              ```sql
-              mysql> \. a.sql
+              mysql> create table person(
+                  -> name varchar(100),
+                  -> title varchar(100)
+                  -> );
               Query OK, 0 rows affected (0.02 sec)
               ```
             </div>
@@ -198,7 +192,48 @@ mysql> select 'hello world' as `result`;
             </div>
           </section>
           <section>
-            Creating address table
+            <code>INSERT</code> using <code>SELECT</code>
+            <div data-markdown>
+              ```sql
+              mysql> insert into person(name,title)
+                  -> select name, 'CEO' from person limit 1;
+              Query OK, 1 row affected (0.00 sec)
+              Records: 1  Duplicates: 0  Warnings: 0
+              ```
+            </div>
+            <div class="fragment" data-markdown>
+              ```sql
+              mysql> select * from person;
+              +-------+------------+
+              | name  | title      |
+              +-------+------------+
+              | chong | programmer |
+              | jim   | cto        |
+              | chong | CEO        |
+              +-------+------------+
+              ```
+            </div>
+          </section>
+          <section>
+            <code>DELETE FROM</code> a table
+            <div data-markdown>
+              ```sql
+              mysql> delete from person where title='CEO';
+              Query OK, 1 row affected (0.00 sec)
+
+              mysql> select * from person;
+              +-------+------------+
+              | name  | title      |
+              +-------+------------+
+              | chong | programmer |
+              | jim   | cto        |
+              +-------+------------+
+              2 rows in set (0.00 sec)
+              ```
+            </div>
+          </section>
+          <section>
+            Dropping a table
             <div data-markdown>
               ```sql
               mysql> create table address (id bigint); -- oops
@@ -237,6 +272,10 @@ mysql> select 'hello world' as `result`;
             CREATE TABLE tbl ( ... )
 
             INSERT INTO tbl VALUES (...)
+
+            INSERT INTO tbl SELECT ...
+
+            DELETE FROM tbl WHERE ...
 
             DROP TABLE tbl
             ```
@@ -408,8 +447,28 @@ URL: http://dev.mysql.com/doc/refman/5.6/en/alter-table.html
               ```
             </div>
           </section>
+        </section>
+        <section>
           <section>
-            Checking on a<code>ddress</code>
+            <h1>Discovering your schema</h1>
+          </section>
+          <section>
+            What does your database look like?
+
+            <div data-markdown>
+              ```sql
+              show databases
+
+              show tables
+
+              select database();
+
+              use dbname
+              ```
+            </div>
+          </section>
+          <section>
+            How is the <code>address</code> table defined
             <div class="fragment" data-markdown>
               ```sql
               mysql> select * from address;
@@ -506,7 +565,8 @@ URL: http://dev.mysql.com/doc/refman/5.6/en/alter-table.html
             </div>
             <div class="fragment" data-markdown>
               ```sql
-              mysql> insert into address values (null, '123 Sesame St', 'Tampa', 'FL', 1);
+              mysql> insert into address(street, city, state, person_id)
+                  -> values ('123 Sesame St', 'Tampa', 'FL', 1);
               Query OK, 1 row affected (0.00 sec)
               ```
             </div>
@@ -570,6 +630,110 @@ URL: http://dev.mysql.com/doc/refman/5.6/en/alter-table.html
               2 rows in set (0.00 sec)
               ```
             </div>
+          </section>
+          <section>
+            Warning: Old style
+            <pre><code class="sql">mysql> select name, title, street, city, state
+    -> from person p, address a
+    -> where p.id = a.person_id;
++-------+------------+-----------------------+-------+-------+
+| name  | title      | street                | city  | state |
++-------+------------+-----------------------+-------+-------+
+| chong | programmer | 123 Sesame St         | Tampa | FL    |
+| chong | programmer | 1313 Mockingbird Lane | Tampa | FL    |
++-------+------------+-----------------------+-------+-------+
+2 rows in set (0.00 sec)
+            </code></pre>
+          </section>
+        </section>
+        <section>
+          <section><h1>Developer's Guide to SQL</h1></section>
+          <section>
+            Python
+
+            <pre><code class="python"># creating "tables"
+
+class Person(object):
+    def __init__(self, name, title):
+        self.name = name
+        self.title = title
+
+class Address(object):
+    def __init__(self, street, city, state, person):
+        self.street = street
+        self.city = city
+        self.state = state
+        self.person = person
+            </code></pre>
+          </section>
+          <section>
+            Python
+            <pre><code class="python"># start with empty "tables"
+persons = []
+addresses = []
+
+# inserting
+persons.append( Person('chong', 'programmer') )
+persons.append( Person('jim', 'cto') )
+
+addresses.append( Address('123 Sesame St', 'Tampa', 'FL', persons[0]) )
+addresses.append( Address('1313 Mockingbird Ln', 'Tampa', 'FL', persons[0]) )
+
+# selecting
+print [ {'name': p.name, 'title': p.title, 'street': a.street, 'city': a.city, 'state': a.state}
+        for p in persons
+        for a in addresses
+        if p == a.person ]
+</code></pre>
+          </section>
+          <section>
+            Python
+            
+            <pre><code> # output
+[
+  {
+    'city': 'Tampa',
+    'state': 'FL',
+    'street': '123 Sesame St',
+    'name': 'chong',
+    'title': 'programmer'
+  },
+  {
+    'city': 'Tampa',
+    'state': 'FL',
+    'street': '1313 Mockingbird Ln',
+    'name': 'chong',
+    'title': 'programmer'
+  }
+]
+</code></pre>
+          </section>
+          <section>
+          Ruby
+          <pre><code class="ruby">
+Person = Struct.new(:name, :title)
+Address = Struct.new(:street, :city, :state, :person)
+
+persons = []
+addresses = []
+
+persons << Person.new('chong', 'programmer')
+persons << Person.new('jim', 'cto')
+
+addresses << Address.new('123 Sesame St', 'Tampa', 'FL', persons.first)
+addresses << Address.new('1313 Mockingbird Ln', 'Tampa', 'FL', persons.first)
+
+result = []
+persons.each do |p|
+  addresses.each do |a|
+    result << { name: p.name, title: p.title, street: a.street, city: a.city, state: a.state } if a.person == p
+  end
+end
+
+puts result.inspect
+          </code></pre>
+
+            
           </section>
           <section>
             Status: Junior Level
