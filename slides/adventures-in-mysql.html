@@ -688,7 +688,7 @@ print [ {'name': p.name, 'title': p.title, 'street': a.street, 'city': a.city, '
           </section>
           <section>
             Python
-            
+
             <pre><code> # output
 [
   {
@@ -732,8 +732,6 @@ end
 
 puts result.inspect
           </code></pre>
-
-            
           </section>
           <section>
             Status: Junior Level
@@ -790,17 +788,206 @@ puts result.inspect
             </div>
           </section>
           <section data-markdown>
-            Multiple databases
-            ```sql
-            create database mydb;
+            Data Warehousing
 
-            drop database mydb;
-
-            select * from mydb.tbl;
-            ```
+            * ETL = Extract, Transform, Load
+            * Denormalize tables
+            * Read-only
+            * Store huge amounts of data
+            * Do mostly group calculations: `sum`, `avg`, `max`
           </section>
         </section>
-        <section> outer joins</section>
+        <section>
+          <section>
+            <h1>Problem</h1>
+
+            <pre>
++----+------------+-------+
+| id | date       | total |
++----+------------+-------+
+|  1 | 2015-01-02 |    12 |
+|  2 | 2015-01-03 |     8 |
+|  3 | 2015-01-04 |     8 |
+|  4 | 2015-01-04 |    10 |
+|  5 | 2015-01-06 |     3 |
+|  6 | 2015-01-10 |     1 |
++----+------------+-------+
+            </pre>
+
+            <ul>
+              <li>There are days where there's no data</li>
+              <li>Write a query that will include all dates given a range</li>
+            </ul>
+          </section>
+          <section>
+            create dates table
+
+            <div data-markdown>
+              ```sql
+-- plant the seed
+create table dates (dt date primary key);
+insert into dates values ('1900-01-01');
+
+-- run this multiple times as needed
+insert into dates
+select adddate(dt, tmp.n)
+from dates,
+     (select count(*) as n from dates) as tmp;
+
+-- trim the fat
+delete from dates
+where dt < '1960-01-01'
+   or dt > '2100-01-01';
+              ```
+            </div>
+          </section>
+          <section>
+            Use outer joins
+
+            <div data-markdown>
+              ```sql
+              mysql> select dates.dt, ds.total
+                  -> from dates
+                  -> left join day_summary ds on dates.dt = ds.date
+                  -> where dates.dt between '2015-01-01' and '2015-01-06'
+                  -> order by 1;
++------------+-------+
+| dt         | total |
++------------+-------+
+| 2015-01-01 |  NULL |
+| 2015-01-02 |    12 |
+| 2015-01-03 |     8 |
+| 2015-01-04 |     8 |
+| 2015-01-04 |    10 |
+| 2015-01-05 |  NULL |
+| 2015-01-06 |     3 |
++------------+-------+
+6 rows in set (0.00 sec)
+              ```
+            </div>
+          </section>
+        </section>
+        <section>
+          <section>
+            <h1>Problem</h1>
+
+            <p>What table has person_id</p>
+          </section>
+          <section data-markdown>
+            Information Schema
+            <div class="fragment" data-markdown>
+              ```sql
+              mysql> select table_name
+                  ->   from information_schema.columns
+                  ->  where table_schema=database()
+                  ->    and column_name='person_id';
++------------+
+| table_name |
++------------+
+| address    |
++------------+
+1 row in set (0.00 sec)
+              ```
+            </div>
+          </section>
+        </section>
+        <section>
+          <section data-markdown>
+            # Performance Tuning
+
+            * `explain`
+            * `analyze table`
+            * `optimize table`
+            * `create index`
+          </section>
+          <section>
+            <code>explain</code>
+            <div>
+              <pre><code>
+mysql> explain select name, street from person join address on person.id = address.person_id;
++----+-------------+---------+------+---------------+------+---------+------+------+----------------------------------------------------+
+| id | select_type | table   | type | possible_keys | key  | key_len | ref  | rows | Extra                                              |
++----+-------------+---------+------+---------------+------+---------+------+------+----------------------------------------------------+
+|  1 | SIMPLE      | address | ALL  | NULL          | NULL | NULL    | NULL |    2 | NULL                                               |
+|  1 | SIMPLE      | person  | ALL  | PRIMARY       | NULL | NULL    | NULL |    2 | Using where; Using join buffer (Block Nested Loop) |
++----+-------------+---------+------+---------------+------+---------+------+------+----------------------------------------------------+
+2 rows in set (0.00 sec)
+              </code></pre>
+            </div>
+          </section>
+          <section>
+            create an index
+            <pre><code class="sql">mysql> alter table address add index(person_id);
+Query OK, 0 rows affected (0.02 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> explain select name, street from person join address on person.id = address.person_id;
++----+-------------+---------+------+---------------+------+---------+------+------+----------------------------------------------------+
+| id | select_type | table   | type | possible_keys | key  | key_len | ref  | rows | Extra                                              |
++----+-------------+---------+------+---------------+------+---------+------+------+----------------------------------------------------+
+|  1 | SIMPLE      | address | ALL  | person_id     | NULL | NULL    | NULL |    2 | NULL                                               |
+|  1 | SIMPLE      | person  | ALL  | PRIMARY       | NULL | NULL    | NULL |    2 | Using where; Using join buffer (Block Nested Loop) |
++----+-------------+---------+------+---------------+------+---------+------+------+----------------------------------------------------+
+2 rows in set (0.00 sec)
+</code></pre>
+<pre><code class="sql fragment">mysql> insert into address(person_id) values (3); -- 7 more times...
+Query OK, 1 row affected (0.00 sec)
+
+mysql> explain select name, street from person join address on person.id = address.person_id;
++----+-------------+---------+------+---------------+-----------+---------+-------------------+------+-------+
+| id | select_type | table   | type | possible_keys | key       | key_len | ref               | rows | Extra |
++----+-------------+---------+------+---------------+-----------+---------+-------------------+------+-------+
+|  1 | SIMPLE      | person  | ALL  | PRIMARY       | NULL      | NULL    | NULL              |    2 | NULL  |
+|  1 | SIMPLE      | address | ref  | person_id     | person_id | 9       | ckim_db.person.id |    1 | NULL  |
++----+-------------+---------+------+---------------+-----------+---------+-------------------+------+-------+
+2 rows in set (0.00 sec)
+            </code></pre>
+          </section>
+          <section>
+            Cardinality
+            <pre><code class="sql">mysql> show index from address where column_name ='person_id';
++---------+------------+-----------+--------------+-------------+-----------+-------------+----------+--------+------+------------+---------+---------------+
+| Table   | Non_unique | Key_name  | Seq_in_index | Column_name | Collation | Cardinality | Sub_part | Packed | Null | Index_type | Comment | Index_comment |
++---------+------------+-----------+--------------+-------------+-----------+-------------+----------+--------+------+------------+---------+---------------+
+| address |          1 | person_id |            1 | person_id   | A         |          10 |     NULL | NULL   | YES  | BTREE      |         |               |
++---------+------------+-----------+--------------+-------------+-----------+-------------+----------+--------+------+------------+---------+---------------+
+1 row in set (0.00 sec)
+</code></pre>
+<pre><code class="sql fragment">mysql> select cardinality
+    -> from information_schema.statistics
+    -> where table_schema=database()
+    -> and table_name='address'
+    -> and column_name='person_id';
++-------------+
+| cardinality |
++-------------+
+|          10 |
++-------------+
+1 row in set (0.00 sec)
+</code></pre>
+          </section>
+          <section>
+            Index maintenance
+            <div class="fragment" data-markdown>
+              ```sql
+              analyze table tblname;  -- recalculate statistics
+              ```
+            </div>
+            <div class="fragment" data-markdown>
+              ```sql
+              optimize table tblname; -- defrag
+              ```
+            </div>
+            <div class="fragment" data-markdown>
+              ```sql
+              alter table address engine=myisam
+              ```
+            </div>
+          </section>
+          <section>
+
+          </section>
+        </section>
         <section> self joins</section>
         <section> join tables </section>
         <section> Hierarchical data
@@ -822,9 +1009,6 @@ puts result.inspect
         <section> replication </section>
         <section> triggers </section>
         <section> variables </section>
-        <section> explain plan</section>
-        <section> optimize table</section>
-        <section> analyze table</section>
         <section> show processlist</section>
         <section> batch processing</section>
         <section> hashing row entries</section>
@@ -832,7 +1016,6 @@ puts result.inspect
         <section> indexing</section>
         <section> composite indexes</section>
         <section> recovery</section>
-        <section> help</section>
         <section> dates, 1..10</section>
         <section> aggregate functions</section>
         <section> property table</section>
