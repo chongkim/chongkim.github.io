@@ -998,17 +998,63 @@ mysql> explain select name, street from person join address on person.id = addre
 
             ![hierarchical data](img/hierarchy.png)
           </section>
+          <section>
+            One solution
+
+            <pre><code class="sql">CREATE TABLE category(
+  category_id INT AUTO_INCREMENT PRIMARY KEY,
+  name VARCHAR(20) NOT NULL,
+  parent INT DEFAULT NULL
+);
+
+SELECT * FROM category ORDER BY category_id;
++-------------+----------------------+--------+
+| category_id | name                 | parent |
++-------------+----------------------+--------+
+|           1 | ELECTRONICS          |   NULL |
+|           2 | TELEVISIONS          |      1 |
+|           3 | TUBE                 |      2 |
+|           4 | LCD                  |      2 |
+|           5 | PLASMA               |      2 |
+|           6 | PORTABLE ELECTRONICS |      1 |
+|           7 | MP3 PLAYERS          |      6 |
+|           8 | FLASH                |      7 |
+|           9 | CD PLAYERS           |      6 |
+|          10 | 2 WAY RADIOS         |      6 |
++-------------+----------------------+--------+
+10 rows in set (0.00 sec)
+</code></pre>
+          </section>
           <section data-markdown>
-            * Hierarchical data - http://mikehillyer.com/articles/managing-hierarchical-data-in-mysql/
+            Problems
+
+            * How many nodes exist under a category
+            * What is the depth of this node
+            * Give the ancestor path
+          </section>
+          <section data-markdown>
+            Hierarchical data
+
+            http://mikehillyer.com/articles/managing-hierarchical-data-in-mysql/
           </section>
         </section>
-        <section data-markdown>
-        # Engines
-        </section>
-        <section data-markdown>
-          * myisam
-          * innodb
-          * blackhole
+        <section>
+          <section data-markdown>
+            # Engines
+          </section>
+          <section data-markdown>
+            * myisam
+            * innodb
+            * blackhole
+            * csv
+          </section>
+          <section>
+            Blackhole
+
+          </section>
+          <section>
+            CSV
+          </section>
         </section>
         <section data-markdown>
           Other topics
@@ -1033,7 +1079,7 @@ mysql> explain select name, street from person join address on person.id = addre
           * multiple servers
           * show variables
           * use of \P
-          * replication
+          * replication (@@sql_log_bin)
           * variables
           * batch processing
           * hashing row entries
