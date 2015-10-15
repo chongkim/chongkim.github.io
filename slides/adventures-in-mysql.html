@@ -984,61 +984,69 @@ mysql> explain select name, street from person join address on person.id = addre
               ```
             </div>
           </section>
-          <section>
+          <section data-markdown>
+            Other tools
 
+            * show processlist;
+            * slow logs
+            ** show variables like 'slow%log';
           </section>
         </section>
-        <section> self joins</section>
-        <section> join tables </section>
-        <section> Hierarchical data
-          - http://mikehillyer.com/articles/managing-hierarchical-data-in-mysql/
-        </section>
-        <section> \P less -S </section>
         <section data-markdown>
-          Engines
-          * myisam
-          * innodb
-          * blackhole
-        </section>
-        <section> multiple servers </section>
-        <section>
-          show variables;
+          Other topics
 
-          use of \P
+          * @@datadir
+          * self joins
+          * join tables 
+          * Hierarchical data - http://mikehillyer.com/articles/managing-hierarchical-data-in-mysql/
+          * \P less -S 
+          * Engines
+            * myisam
+            * innodb
+            * blackhole
         </section>
-        <section> replication </section>
-        <section> triggers </section>
-        <section> variables </section>
-        <section> show processlist</section>
-        <section> batch processing</section>
-        <section> hashing row entries</section>
-        <section> ORM</section>
-        <section> indexing</section>
-        <section> composite indexes</section>
-        <section> recovery</section>
-        <section> dates, 1..10</section>
-        <section> aggregate functions</section>
-        <section> property table</section>
-        <section> information_schema</section>
-        <section> stored procedure</section>
-        <section> varchar vs binary</section>
-        <section> ci</section>
-        <section>my.cnf</section>
-        <section> subqueries
-          <section> one row</section>
-          <section> multiple rows</section>
-          <section> in FROM</section>
+        <section data-markdown>
+          Other topics
+          * multiple servers 
+          * show variables
+          * use of \P
+          * replication 
+          * triggers 
+          * variables 
+          * batch processing
+          * hashing row entries
+          * ORM
         </section>
-        <section>
-          <section> set theory</section>
-          <section> UNION ALL</section>
-          <section> "MINUS"</section>
-          <section> intersect</section>
+        <section data-markdown>
+          Other topics
+          * composite indexes
+          * recovery
+          * dates, 1..10
+          * aggregate functions
+          * property table
+          * stored procedure
+          * varchar vs binary
+          * ci
+          * my.cnf
         </section>
-        <section> diffing tables </section>
-        <section> SQLite </section>
-        <section> group by </section>
-        <section>count(*) or count(field)</section>
+        <section data-markdown>
+          Other topics
+          * subqueries
+            * one row
+            * multiple rows
+            * in FROM
+          * set theory
+            * UNION ALL
+            * "MINUS"
+            * intersect
+          * diffing tables 
+        </section>
+        <section data-markdown>
+          Other topics
+          * SQLite 
+          * group by 
+          * count(*) or count(field)
+        </section>
       </div>
     </div>
     <script src="lib/js/head.min.js"></script>
