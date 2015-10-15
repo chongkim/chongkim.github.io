@@ -726,7 +726,8 @@ addresses << Address.new('1313 Mockingbird Ln', 'Tampa', 'FL', persons.first)
 result = []
 persons.each do |p|
   addresses.each do |a|
-    result << { name: p.name, title: p.title, street: a.street, city: a.city, state: a.state } if a.person == p
+    result << { name: p.name, title: p.title, street: a.street,
+                city: a.city, state: a.state } if a.person == p
   end
 end
 
@@ -808,9 +809,8 @@ puts result.inspect
 |  1 | 2015-01-02 |    12 |
 |  2 | 2015-01-03 |     8 |
 |  3 | 2015-01-04 |     8 |
-|  4 | 2015-01-04 |    10 |
-|  5 | 2015-01-06 |     3 |
-|  6 | 2015-01-10 |     1 |
+|  4 | 2015-01-06 |     3 |
+|  5 | 2015-01-10 |     1 |
 +----+------------+-------+
             </pre>
 
@@ -1060,43 +1060,57 @@ SELECT * FROM category ORDER BY category_id;
           </section>
         </section>
         <section>
-          <section>
+          <section data-markdown>
             # Problem
             Who touched my table?
           </section>
-          <section>
-            triggers
+          <section data-markdown>
+            Triggers
+            
+            ```sql
+            create table info(n int);
+            insert into info values (1),(2),(3);
+            create table log(v varchar(100));
+            ```
+
+            ```sql
+create trigger whodoneit
+before delete 
+on info for each row
+insert into log values (concat(user(), ' removed ', old.n));
+            ```
           </section>
+        </section>
+        <section>
+          SQLite
         </section>
         <section data-markdown>
           Other topics
 
-          * @@datadir
+          * set theory
+            * UNION ALL
+            * "MINUS"
+            * intersect
+          * varchar vs binary
           * self joins
           * join tables
           * \P less -S
-        </section>
-        <section data-markdown>
-          Other topics
-          * multiple servers
-          * show variables
-          * use of \P
+          * show variables (datadir)
+          * stored procedure
           * replication (@@sql_log_bin)
-          * variables
-          * batch processing
-          * hashing row entries
-          * ORM
         </section>
         <section data-markdown>
           Other topics
+          * ci and collation
+          * partition
+          * hashing row entries to checksum blocks of rows
+          * my.cnf
+          * batch processing
+          * ORM
           * composite indexes
           * recovery
           * aggregate functions
-          * property table
-          * stored procedure
-          * varchar vs binary
-          * ci collation
-          * my.cnf
+          * multiple servers
         </section>
         <section data-markdown>
           Other topics
@@ -1104,15 +1118,6 @@ SELECT * FROM category ORDER BY category_id;
             * one row
             * multiple rows
             * in FROM
-          * set theory
-            * UNION ALL
-            * "MINUS"
-            * intersect
-          * diffing tables
-        </section>
-        <section data-markdown>
-          Other topics
-          * SQLite
           * group by
           * count(*) or count(field)
         </section>
