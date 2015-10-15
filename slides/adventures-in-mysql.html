@@ -992,18 +992,41 @@ mysql> explain select name, street from person join address on person.id = addre
             ** show variables like 'slow%log';
           </section>
         </section>
+        <section>
+          <section data-markdown>
+            # PROBLEM
+
+            ![hierarchical data](img/hierarchy.png)
+          </section>
+          <section data-markdown>
+            * Hierarchical data - http://mikehillyer.com/articles/managing-hierarchical-data-in-mysql/
+          </section>
+        </section>
+        <section data-markdown>
+        # Engines
+        </section>
+        <section data-markdown>
+          * myisam
+          * innodb
+          * blackhole
+        </section>
         <section data-markdown>
           Other topics
 
           * @@datadir
           * self joins
           * join tables 
-          * Hierarchical data - http://mikehillyer.com/articles/managing-hierarchical-data-in-mysql/
           * \P less -S 
           * Engines
-            * myisam
-            * innodb
-            * blackhole
+        </section>
+        <section>
+          <section>
+            # Problem
+            Who touched my table?
+          </section>
+          <section>
+            triggers
+          </section>
         </section>
         <section data-markdown>
           Other topics
@@ -1011,7 +1034,6 @@ mysql> explain select name, street from person join address on person.id = addre
           * show variables
           * use of \P
           * replication 
-          * triggers 
           * variables 
           * batch processing
           * hashing row entries
@@ -1021,12 +1043,11 @@ mysql> explain select name, street from person join address on person.id = addre
           Other topics
           * composite indexes
           * recovery
-          * dates, 1..10
           * aggregate functions
           * property table
           * stored procedure
           * varchar vs binary
-          * ci
+          * ci collation
           * my.cnf
         </section>
         <section data-markdown>
