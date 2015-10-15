@@ -1066,7 +1066,7 @@ SELECT * FROM category ORDER BY category_id;
           </section>
           <section data-markdown>
             Triggers
-            
+
             ```sql
             create table info(n int);
             insert into info values (1),(2),(3);
@@ -1075,7 +1075,7 @@ SELECT * FROM category ORDER BY category_id;
 
             ```sql
 create trigger whodoneit
-before delete 
+before delete
 on info for each row
 insert into log values (concat(user(), ' removed ', old.n));
             ```
