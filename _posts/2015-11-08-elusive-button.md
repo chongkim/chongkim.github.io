@@ -48,6 +48,8 @@ CSS
 }
 {% endhighlight %}
 
+Javascript
+
 {% highlight js %}
 $(document).ready(function() {
   $('#btn').hover(function(e) {
