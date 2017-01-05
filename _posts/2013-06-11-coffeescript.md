@@ -50,3 +50,8 @@ default args).
 
 All in all, it's worth looking into.  Probably the best way to use it is by
 converting an existing javascript code and cleaning it up.
+
+*Edited 2017-01-05*: Here's an interesting resource that has some more info
+on coffeescript
+
+* [CoffeeScript Introduction and Resources](http://wiht.link/CoffeeScript)
